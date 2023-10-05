@@ -1,10 +1,11 @@
 :root {
-  --primaryColor: rgb(229, 243, 129);
+  --primaryColor: rgb(219, 246, 91);
   --secondaryColor: rgb(165, 54, 127);
   --terciaryColor: #831c1c;
   --white: #fff;
   --black: #000;
   --primaryFont: "Mulish", sans-serif;
+  --secondaryFont: "Lalezar", cursive;
 }
 
 *,
