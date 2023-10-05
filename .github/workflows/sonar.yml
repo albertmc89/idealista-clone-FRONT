@@ -1,0 +1,32 @@
+name: Sonar
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Node Modules
+        run: npm ci
+      - name: Coverage
+        run: npm run test:coverage
+        env:
+          VITE_API_PLAYERS_URL: ${{ secrets.VITE_API_PLAYERS_URL }}
+          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+          VITE_FIREBASE_API_AUTHDOMAIN: ${{ secrets.VITE_FIREBASE_API_AUTHDOMAIN }}
+          VITE_FIREBASE_API_PROJECTID: ${{ secrets.VITE_VITE_FIREBASE_API_PROJECTIDAPI_URL }}
+          VITE_FIREBASE_API_STORAGEBUCKET: ${{ secrets.VITE_FIREBASE_API_STORAGEBUCKET }}
+          VITE_FIREBASE_API_MESSAGINGSENDERID: ${{ secrets.VITE_FIREBASE_API_MESSAGINGSENDERID }}
+          VITE_FIREBASE_API_APPID: ${{ secrets.VITE_FIREBASE_API_APPID }}
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
