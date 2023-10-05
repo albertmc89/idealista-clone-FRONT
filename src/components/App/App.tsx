@@ -1,5 +1,5 @@
 const App = (): React.ReactElement => {
-  return <p>Hello world!</p>;
+  return <div className="container">hello world!</div>;
 };
 
 export default App;
