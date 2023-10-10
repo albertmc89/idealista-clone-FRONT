@@ -8,3 +8,23 @@
   align-items: center;
   padding: 20px;
 }
+
+.button {
+  display: none;
+}
+
+@media (min-width: 565px) {
+  .button--solid-primary {
+    display: flex;
+    background-color: var(--secondaryColor);
+    color: var(--white);
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 40px;
+    font-family: var(--primaryFont);
+    font-weight: 700;
+    flex-direction: row-reverse;
+    gap: 10px;
+  }
+}
