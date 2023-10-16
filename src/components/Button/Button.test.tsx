@@ -4,12 +4,12 @@ import Button from "./Button";
 
 describe("Given a Button component", () => {
   describe("When it is rendered", () => {
-    test("It should show a text 'Log out'", () => {
-      const buttonText = "Log out";
+    test("It should show a text 'Login'", () => {
+      const buttonText = "Login";
 
       render(
         <BrowserRouter>
-          <Button text="Log out" />
+          <Button text="Login" />
         </BrowserRouter>,
       );
 

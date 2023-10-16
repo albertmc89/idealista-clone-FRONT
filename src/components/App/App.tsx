@@ -1,9 +1,10 @@
-import Header from "../Header/Header";
+import Homepage from "../../pages/Homepage/Homepage";
+import "./App.css";
 
 const App = (): React.ReactElement => {
   return (
     <div className="container">
-      <Header />
+      <Homepage />
     </div>
   );
 };
