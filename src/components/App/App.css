@@ -1,0 +1,5 @@
+.container {
+  background-image: var(--background-desktop);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
