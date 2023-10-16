@@ -1,11 +1,12 @@
 :root {
-  --primaryColor: rgb(219, 246, 91);
+  --primaryColor: rgb(219, 244, 91);
   --secondaryColor: rgb(165, 54, 127);
   --terciaryColor: #831c1c;
   --white: #fff;
   --black: #000;
   --primaryFont: "Mulish", sans-serif;
   --secondaryFont: "Lalezar", cursive;
+  --background-desktop: url(/public/img/background-desktop.webp);
 }
 
 *,
@@ -42,10 +43,13 @@ button {
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--primaryColor);
+  font-weight: 700;
 }
 
-h1 {
+h1,
+h2,
+h3 {
   margin: 0;
 }
 
