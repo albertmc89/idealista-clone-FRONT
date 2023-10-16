@@ -4,8 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 
 describe("Given a App component", () => {
   describe("When it's rendered", () => {
-    test("Then it should show a 'logo ball with blue and yellor colors'", () => {
-      const headingText = "idealista";
+    test("Then it should show a heading showing 'InvestWise'", () => {
+      const headingText = "InvestWise";
 
       render(
         <BrowserRouter>
