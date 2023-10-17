@@ -1,12 +1,14 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import Homepage from "../../pages/Homepage/Homepage";
 import "./App.css";
+import PropertiesListPage from "../../pages/PropertiesListPage/PropertiesListPage";
+import Header from "../Header/Header";
 
 const App = (): React.ReactElement => {
   return (
     <div className="container">
+      <Header />
       <Routes>
-        <Route path="/home" element={<Homepage />} />
+        <Route path="/home" element={<PropertiesListPage />} />
         <Route path="/" element={<Navigate to="/home" />} />
       </Routes>
     </div>
