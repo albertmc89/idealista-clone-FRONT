@@ -6,10 +6,11 @@ const Header = (): React.ReactElement => {
   return (
     <header className="header">
       <div className="title-container">
-        <h1>idealista</h1>
+        <img src="./img/logo.png" alt="black and white building logo" />
+        <h1>InvestWise</h1>
       </div>
       <Navigation />
-      <Button className="button--solid-primary" text="Log out">
+      <Button className="button--transparent-primary" text="Log out">
         <img
           src="/img/arrow-logout.svg"
           alt="black arrow logout"

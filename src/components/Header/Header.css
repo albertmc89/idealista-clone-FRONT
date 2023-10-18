@@ -1,27 +1,56 @@
 .header {
   min-height: 65px;
   font-size: 0.9rem;
-  background-color: var(--primaryColor);
+  background-image: var(--background-desktop);
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: var(--secondaryFont);
+  color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
 }
 
-.button {
+.button--transparent-primary {
+  display: flex;
+  background-color: var(--primaryColor);
+  color: var(--black);
+  border-radius: 7px;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 45px;
+  font-family: var(--primaryFont);
+  font-weight: 700;
+  flex-direction: row-reverse;
+  gap: 10px;
+}
+
+h1 {
   display: none;
 }
 
-@media (min-width: 565px) {
-  .button--solid-primary {
+@media (min-width: 765px) {
+  .title-container {
     display: flex;
-    background-color: var(--secondaryColor);
-    color: var(--white);
+    gap: 20px;
+    align-items: end;
+  }
+
+  h1 {
+    display: block;
+  }
+
+  .button--transparent-primary {
+    display: flex;
+    background-color: var(--primaryColor);
+    color: var(--black);
+    border-radius: 7px;
     align-items: center;
     justify-content: center;
-    width: 120px;
-    height: 40px;
+    width: 100px;
+    height: 45px;
     font-family: var(--primaryFont);
     font-weight: 700;
     flex-direction: row-reverse;
