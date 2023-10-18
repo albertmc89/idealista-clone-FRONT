@@ -1,7 +1,17 @@
 import "./Homepage.css";
 import Button from "../../components/Button/Button";
+import { auth, gitHubProvider } from "../../firebase";
+import { browserPopupRedirectResolver, signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
+  const navigate = useNavigate();
+
+  const login = async () => {
+    await signInWithPopup(auth, gitHubProvider, browserPopupRedirectResolver);
+
+    navigate("/properties");
+  };
   return (
     <>
       <header className="header">
@@ -9,7 +19,11 @@ const Homepage = () => {
           <img src="./img/logo.png" alt="black and white building logo" />
           <h1>InvestWise</h1>
         </div>
-        <Button className="button--transparent-primary" text="Login">
+        <Button
+          className="button--transparent-primary"
+          text="Login"
+          actionOnClick={login}
+        >
           <img src="./img/no-user.svg" alt="user icon" width={18} height={18} />
         </Button>
       </header>
