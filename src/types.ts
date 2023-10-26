@@ -24,7 +24,7 @@ export interface ApiProperty {
   __v?: number;
 }
 
-export interface ApiProperty {
+export interface ApiProperties {
   properties: ApiProperty[];
 }
 export interface Property extends Omit<ApiProperty, "_id"> {
