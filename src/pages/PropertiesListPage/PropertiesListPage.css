@@ -1,11 +1,13 @@
 .properties-page {
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  justify-content: center;
   margin-top: 45px;
 }
 
 .properties-title {
+  display: flex;
+  justify-content: center;
   font-size: 1.625rem;
   color: var(--white);
   font-weight: 700;
