@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import auth, { AuthStateHook } from "react-firebase-hooks/auth";
 import { User } from "firebase/auth";
 import userEvent from "@testing-library/user-event";
+import { store } from "../../store";
+import { Provider } from "react-redux";
 
 vi.mock("firebase/auth");
 
@@ -21,9 +23,11 @@ describe("Given a App component", () => {
       auth.useAuthState = vi.fn().mockReturnValue(authStateHookMock);
 
       render(
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>,
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Provider>,
       );
 
       const heading = screen.getByRole("heading", { name: headingText });
@@ -40,9 +44,11 @@ describe("Given a App component", () => {
       auth.useAuthState = vi.fn().mockReturnValue(authStateHookMock);
 
       render(
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>,
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Provider>,
       );
 
       const loginButton = screen.getByRole("button", {
@@ -68,9 +74,11 @@ describe("Given a App component", () => {
         auth.useAuthState = vi.fn().mockReturnValue(authStateHookMock);
 
         render(
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>,
+          <Provider store={store}>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </Provider>,
         );
 
         const logoutButton = screen.getByRole("button", {

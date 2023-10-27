@@ -1,6 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import PropertiesListPage from "./PropertiesListPage";
+import { Provider } from "react-redux";
+import { store } from "../../store";
 
 describe("Given a Homepage page", () => {
   describe("When it's rendered", () => {
@@ -8,9 +10,11 @@ describe("Given a Homepage page", () => {
       const headerText = "Properties";
 
       render(
-        <BrowserRouter>
-          <PropertiesListPage />
-        </BrowserRouter>,
+        <Provider store={store}>
+          <BrowserRouter>
+            <PropertiesListPage />
+          </BrowserRouter>
+        </Provider>,
       );
 
       const heading = screen.getByRole("heading", { name: headerText });
