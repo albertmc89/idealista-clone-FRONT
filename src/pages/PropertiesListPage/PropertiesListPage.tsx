@@ -3,6 +3,7 @@ import { propertiesMock } from "../../mocks/propertiesMock";
 import { useAppDispatch } from "../../store";
 import { loadPropertiesActionCreator } from "../../store/properties/propertiesSlice";
 import "./PropertiesListPage.css";
+import PropertiesList from "../../components/PropertiesList/PropertiesList";
 
 const PropertiesListPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -15,6 +16,7 @@ const PropertiesListPage = (): React.ReactElement => {
     <>
       <section className="properties-page">
         <h2 className="properties-title">Properties</h2>
+        <PropertiesList />
       </section>
     </>
   );
