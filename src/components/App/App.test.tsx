@@ -1,11 +1,12 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import auth, { AuthStateHook } from "react-firebase-hooks/auth";
 import { User } from "firebase/auth";
 import userEvent from "@testing-library/user-event";
 import { store } from "../../store";
 import { Provider } from "react-redux";
+import paths from "../../paths/paths";
 
 vi.mock("firebase/auth");
 
@@ -93,6 +94,30 @@ describe("Given a App component", () => {
 
           expect(heading).toBeInTheDocument();
         });
+      });
+    });
+
+    describe("When the user is not logged in", () => {
+      test("Then it should show 'InvestWise' inside a heading", async () => {
+        const authStateHookMock: Partial<AuthStateHook> = [
+          undefined,
+          undefined,
+        ];
+        auth.useAuthState = vi.fn().mockReturnValue(authStateHookMock);
+
+        render(
+          <MemoryRouter initialEntries={[paths.properties]}>
+            <Provider store={store}>
+              <App />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        const heading = await screen.findByRole("heading", {
+          name: "InvestWise",
+        });
+
+        expect(heading).toBeInTheDocument();
       });
     });
   });
