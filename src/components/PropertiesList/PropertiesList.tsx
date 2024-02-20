@@ -1,4 +1,5 @@
 import { useAppSelector } from "../../store";
+import PropertyCard from "../PropertyCard/PropertyCard";
 
 const PropertiesList = () => {
   const properties = useAppSelector(
@@ -9,7 +10,7 @@ const PropertiesList = () => {
     <ul className="properties-list">
       {properties.map((property) => (
         <li key={property.id}>
-          <h2>{property.address}</h2>
+          <PropertyCard property={property} />
         </li>
       ))}
     </ul>

@@ -16,9 +16,10 @@ export const propertiesMock: Property[] = [
     heating: true,
     emissions: 50,
     level: "first floor",
-    description: "The best",
+    description:
+      "The best Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius earum dolores dolorum, aliquid iste quos perspiciatis officia et, exercitationem beatae aliquam optio, veniam aut quod quis quae quia explicabo officiis.",
     isFavourite: true,
-    image1: "string",
+    image1: "./img/post-image.webp",
     image2: "string",
     image3: "string",
     image4: "string",
