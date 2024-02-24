@@ -1,5 +1,5 @@
 export interface ApiProperty {
-  id: string;
+  _id: string;
   address: string;
   price: number;
   rooms: number;
