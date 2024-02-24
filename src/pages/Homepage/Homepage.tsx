@@ -1,22 +1,32 @@
 import "./Homepage.css";
-import Button from "../../components/Button/Button";
 import { auth, gitHubProvider } from "../../firebase";
 import { browserPopupRedirectResolver, signInWithPopup } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import paths from "../../paths/paths";
+import Button from "../../components/Button/Button";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Homepage = () => {
-  const navigate = useNavigate();
+  const [user] = useAuthState(auth);
+
+  if (user) {
+    return <Navigate to={paths.properties} />;
+  }
 
   const login = async () => {
     await signInWithPopup(auth, gitHubProvider, browserPopupRedirectResolver);
-
-    navigate("/properties");
   };
+
   return (
     <>
-      <header className="header">
+      <div className="header">
         <div className="title-container">
-          <img src="./img/logo.png" alt="black and white building logo" />
+          <img
+            src="./img/logo.png"
+            alt="black and white building logo"
+            height="28"
+            width="28"
+          />
           <h1>InvestWise</h1>
         </div>
         <Button
@@ -26,8 +36,8 @@ const Homepage = () => {
         >
           <img src="./img/no-user.svg" alt="user icon" width={18} height={18} />
         </Button>
-      </header>
-      <main className="main">
+      </div>
+      <div className="main-container">
         <section className="section-container">
           <article className="hero-container">
             <div className="hero-container__box">
@@ -100,7 +110,7 @@ const Homepage = () => {
             </div>
           </article>
         </section>
-      </main>
+      </div>
     </>
   );
 };

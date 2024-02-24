@@ -12,21 +12,23 @@ const App = (): React.ReactElement => {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="container">
+    <>
       {user && <Header />}
-      <Routes>
-        <Route path={paths.homepage} element={<Homepage />} />
-        <Route path={paths.root} element={<Navigate to={paths.homepage} />} />
-        <Route
-          path={paths.properties}
-          element={
-            <ProtectedRoute>
-              <PropertiesListPage />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </div>
+      <main className="container">
+        <Routes>
+          <Route path={paths.homepage} element={<Homepage />} />
+          <Route path={paths.root} element={<Navigate to={paths.homepage} />} />
+          <Route
+            path={paths.properties}
+            element={
+              <ProtectedRoute>
+                <PropertiesListPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </main>
+    </>
   );
 };
 
