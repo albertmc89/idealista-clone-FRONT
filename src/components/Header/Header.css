@@ -20,26 +20,31 @@
   align-items: center;
   justify-content: center;
   width: 100px;
-  height: 45px;
+  height: 40px;
   font-family: var(--primaryFont);
   font-weight: 700;
   flex-direction: row-reverse;
   gap: 10px;
 }
 
-h1 {
+.title-text {
   display: none;
 }
 
 @media (min-width: 765px) {
   .title-container {
     display: flex;
-    gap: 20px;
+    gap: 10px;
+    font-size: 0.6rem;
     align-items: end;
   }
 
-  h1 {
-    display: block;
+  .title-text {
+    display: flex;
+  }
+
+  .title__logo {
+    margin-bottom: 10px;
   }
 
   .button--transparent-primary {
@@ -50,7 +55,7 @@ h1 {
     align-items: center;
     justify-content: center;
     width: 100px;
-    height: 45px;
+    height: 40px;
     font-family: var(--primaryFont);
     font-weight: 700;
     flex-direction: row-reverse;

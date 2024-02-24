@@ -11,13 +11,20 @@ const Header = (): React.ReactElement => {
   const logout = async () => {
     await signOut(auth);
 
-    navigate("/");
+    navigate("/home");
   };
+
   return (
     <header className="header">
       <div className="title-container">
-        <img src="./img/logo.png" alt="black and white building logo" />
-        <h1>InvestWise</h1>
+        <img
+          className="title__logo"
+          src="./img/logo.png"
+          alt="black and white building logo"
+          height="40"
+          width="40"
+        />
+        <h1 className="title-text">InvestWise</h1>
       </div>
       <Navigation />
       <Button

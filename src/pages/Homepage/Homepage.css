@@ -20,12 +20,6 @@
   background-size: cover;
 }
 
-.title-container {
-  display: flex;
-  align-items: end;
-  gap: 20px;
-}
-
 h1 {
   display: none;
 }
