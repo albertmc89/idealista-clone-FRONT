@@ -158,8 +158,9 @@ describe("Given a App component", () => {
   });
 
   describe("When the user clicks on the Login button", () => {
-    test("Then it should show 'Players' inside a heading", async () => {
+    test("Then it should show 'Properties' inside a heading", async () => {
       const propertiesRoute = paths.login;
+      const toastText = "close";
       const headingText = "Properties";
 
       const authStateHookMock: Partial<AuthStateHook> = [user as User];
@@ -173,11 +174,15 @@ describe("Given a App component", () => {
         </MemoryRouter>,
       );
 
+      const toast = await screen.findByRole("button", {
+        name: toastText,
+      });
       const heading = await screen.findByRole("heading", {
         name: headingText,
       });
 
       expect(heading).toBeInTheDocument();
+      expect(toast).toBeInTheDocument();
     });
   });
 });

@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
-import "./showFeedBack.css";
+import "./showFeedbacks.css";
 
-export const showFeedback = (message: string, type: "error" | "success") => {
+export const showFeedbacks = (message: string, type: "error" | "success") => {
   toast[type](message, {
     position: "top-center",
     autoClose: 2500,

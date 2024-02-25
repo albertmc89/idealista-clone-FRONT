@@ -6,7 +6,7 @@
   width: 280px;
   height: 420px;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .property__container {
@@ -83,7 +83,7 @@
 
   .property__picture {
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: bottom;
   }
 
