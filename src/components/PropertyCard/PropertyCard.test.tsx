@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import { setupStore } from "../../store";
+import { setupStore, store } from "../../store";
 import { propertiesMock } from "../../mocks/propertiesMock";
 import PropertyCard from "./PropertyCard";
 
@@ -44,6 +44,23 @@ describe("Given a PropertyCard component", () => {
     );
 
     const heading = screen.getByRole("heading", { name: headingText });
+
+    expect(heading).toBeInTheDocument();
+  });
+
+  test("Then it should show a text with 'sin ascensor' inside if the properties state is false", () => {
+    const headingText = "sin ascensor";
+    const alella = propertiesMock[0];
+
+    render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <PropertyCard property={alella} />
+        </Provider>
+      </BrowserRouter>,
+    );
+
+    const heading = screen.getByText(headingText);
 
     expect(heading).toBeInTheDocument();
   });
