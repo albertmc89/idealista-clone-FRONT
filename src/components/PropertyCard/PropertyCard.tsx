@@ -1,3 +1,4 @@
+import useInvestmentsApi from "../../hooks/useInvestmentsApi";
 import { useAppDispatch } from "../../store";
 import { deletePropertyActionCreator } from "../../store/properties/propertiesSlice";
 import { Property } from "../../types";
@@ -22,8 +23,11 @@ const PropertyCard = ({
   },
 }: PropertyCardProps): React.ReactElement => {
   const dispatch = useAppDispatch();
+  const { deletePropertyApi } = useInvestmentsApi();
 
-  const deleteProperty = () => {
+  const deleteProperty = async () => {
+    await deletePropertyApi(id!);
+
     dispatch(deletePropertyActionCreator(id!));
   };
 
@@ -79,8 +83,6 @@ const PropertyCard = ({
               src="/img/DeleteForever.svg"
               aria-label="delete logo vector"
               className="delete-logo"
-              width={30}
-              height={30}
             />
           </button>
         </div>

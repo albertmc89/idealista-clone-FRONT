@@ -1,7 +1,7 @@
 .loader {
   width: 36px;
   aspect-ratio: 1;
-  color: #514b82;
+  color: #ffffff;
   background: conic-gradient(from 134deg at top, currentColor 92deg, #0000 0);
   position: relative;
   animation: l22-0 2s infinite linear;
