@@ -3,4 +3,5 @@ export interface PathsStructure {
   homepage: string;
   properties: string;
   error: string;
+  login: string;
 }
