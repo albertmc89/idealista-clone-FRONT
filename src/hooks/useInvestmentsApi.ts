@@ -8,6 +8,7 @@ import {
   startLoadingActionCreator,
   stopLoadingActionCreator,
 } from "../store/ui/uiSlice";
+import { showFeedbacks } from "../components/Feedbacks/showFeedbacks";
 
 const useInvestmentsApi = () => {
   const [user] = useIdToken(auth);
@@ -46,8 +47,37 @@ const useInvestmentsApi = () => {
     }
   }, [apiUrl, user, dispatch]);
 
+  const deletePropertyApi = useCallback(
+    async (id: string) => {
+      try {
+        dispatch(startLoadingActionCreator());
+        if (!user) {
+          throw Error();
+        }
+
+        const token = await user.getIdToken();
+
+        const { data } = await axios.delete<string>(
+          `${apiUrl}properties/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+        );
+        dispatch(stopLoadingActionCreator());
+
+        showFeedbacks("Property successfully deleted", "success");
+        return data;
+      } catch (error: unknown) {
+        showFeedbacks("Couldn't delete property", "error");
+        throw new Error("Couldn't delete property");
+      }
+    },
+    [apiUrl, user, dispatch],
+  );
+
   return {
     getProperties,
+    deletePropertyApi,
   };
 };
 
