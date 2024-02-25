@@ -49,13 +49,31 @@ describe("Given a PropertyCard component", () => {
   });
 
   test("Then it should show a text with 'sin ascensor' inside if the properties state is false", () => {
+    const mockPropertyFalseElevator = { ...propertiesMock[0], elevator: false };
+
     const headingText = "sin ascensor";
-    const alella = propertiesMock[0];
 
     render(
       <BrowserRouter>
         <Provider store={store}>
-          <PropertyCard property={alella} />
+          <PropertyCard property={mockPropertyFalseElevator} />
+        </Provider>
+      </BrowserRouter>,
+    );
+
+    const heading = screen.getByText(headingText);
+
+    expect(heading).toBeInTheDocument();
+  });
+
+  test("Then it should show a text with 'sin ascensor' inside if the properties state is true", () => {
+    const mockPropertyTrueElevator = { ...propertiesMock[0], elevator: true };
+    const headingText = "con ascensor";
+
+    render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <PropertyCard property={mockPropertyTrueElevator} />
         </Provider>
       </BrowserRouter>,
     );
