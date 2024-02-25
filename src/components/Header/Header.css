@@ -13,7 +13,7 @@
   padding: 20px;
 }
 
-.button--transparent-primary {
+.button--transparent-user {
   display: flex;
   background-color: var(--primaryColor);
   color: var(--black);
@@ -46,20 +46,5 @@
 
   .title__logo {
     margin-bottom: 10px;
-  }
-
-  .button--transparent-primary {
-    display: flex;
-    background-color: var(--primaryColor);
-    color: var(--black);
-    border-radius: 7px;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    height: 40px;
-    font-family: var(--primaryFont);
-    font-weight: 700;
-    flex-direction: row-reverse;
-    gap: 10px;
   }
 }

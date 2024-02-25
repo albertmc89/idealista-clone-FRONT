@@ -18,7 +18,7 @@ const Navigation = (): React.ReactElement => {
             width={18}
             height={18}
           />
-          <NavLink className="navigation-link" to="/post-property">
+          <NavLink className="navigation-link" to="/addproperty">
             Post your property
           </NavLink>
         </li>
