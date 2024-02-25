@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import axios from "axios";
 import { ApiProperties, Property } from "../types";
-import { useIdToken } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
+import { useIdToken } from "react-firebase-hooks/auth";
 
 const useInvestmentsApi = () => {
   const [user] = useIdToken(auth);
@@ -14,14 +14,14 @@ const useInvestmentsApi = () => {
       if (user) {
         const token = await user.getIdToken();
 
-        const { data: apiProperties } = await axios.get<ApiProperties>(
+        const { data: Properties } = await axios.get<ApiProperties>(
           `${apiUrl}properties`,
           {
             headers: { Authorization: `Bearer ${token}` },
           },
         );
 
-        const apiPropertiesList = apiProperties.properties;
+        const apiPropertiesList = Properties.properties;
 
         const properties = apiPropertiesList.map<Property>(
           ({ _id, ...apiPropertiesList }) => ({

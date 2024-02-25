@@ -4,7 +4,7 @@ import PropertiesListPage from "./PropertiesListPage";
 import { Provider } from "react-redux";
 import { store } from "../../store";
 
-describe("Given a Homepage page", () => {
+describe("Given a PropertiesListPage", () => {
   describe("When it's rendered", () => {
     test("Then it should show the text 'Properties'", () => {
       const headerText = "Properties";
