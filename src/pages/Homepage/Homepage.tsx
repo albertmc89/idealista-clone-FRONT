@@ -46,6 +46,7 @@ const Homepage = () => {
         </div>
       </div>
       <div className="main-container">
+        <h2 className="main-container__title">Crea tu cuenta ▼</h2>
         <form className="form-container" onSubmit={submitRegister}>
           <input
             type="email"
