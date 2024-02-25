@@ -8,11 +8,13 @@ import { auth } from "../../firebase";
 import useInvestmentsApi from "../../hooks/useInvestmentsApi";
 import paths from "../../paths/paths";
 import { NavLink } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
 
 const PropertiesListPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const { getProperties } = useInvestmentsApi();
-  const [user] = useAuthState(auth);
+  const [user, isLoadingAuth] = useAuthState(auth);
+  const isLoadingUi = useAppSelector((state) => state.uiState.isLoading);
   const properties = useAppSelector(
     (state) => state.propertiesState.properties,
   );
@@ -31,7 +33,7 @@ const PropertiesListPage = (): React.ReactElement => {
 
   return (
     <>
-      {hasProperties ? (
+      {hasProperties && !isLoadingAuth && !isLoadingUi ? (
         <>
           <div className="properties-page">
             <h2 className="properties-title">Properties</h2>
@@ -49,7 +51,7 @@ const PropertiesListPage = (): React.ReactElement => {
       ) : (
         <section className="properties-page">
           <h2 className="properties-title">Properties</h2>
-          <PropertiesList />
+          {isLoadingUi ? <Loading /> : <PropertiesList />}
         </section>
       )}
     </>

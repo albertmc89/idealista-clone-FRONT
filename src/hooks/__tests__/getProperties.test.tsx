@@ -5,6 +5,9 @@ import useInvestmentsApi from "../useInvestmentsApi";
 import { propertiesMock } from "../../mocks/propertiesMock";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
+import { PropsWithChildren } from "react";
+import { setupStore } from "../../store";
+import { Provider } from "react-redux";
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -18,10 +21,16 @@ const authStateHookMock: Partial<AuthStateHook> = [user as User];
 auth.useIdToken = vi.fn().mockReturnValue([user]);
 auth.useAuthState = vi.fn().mockReturnValue(authStateHookMock);
 
+const wrapper = ({ children }: PropsWithChildren): React.ReactElement => {
+  const store = setupStore({ uiState: { isLoading: false } });
+
+  return <Provider store={store}>{children}</Provider>;
+};
+
 describe("Given function getProperties from useInvestmentsApi custom hook", () => {
   describe("When the function is called", () => {
     test("Then you will recieve a list of properties", async () => {
-      const { result } = renderHook(() => useInvestmentsApi());
+      const { result } = renderHook(() => useInvestmentsApi(), { wrapper });
       const { getProperties } = result.current;
 
       const properties = await getProperties();
@@ -35,7 +44,7 @@ describe("Given function getProperties from useInvestmentsApi custom hook", () =
       server.resetHandlers(...errorHandlers);
 
       const expectedError = new Error("Can't get any property");
-      const { result } = renderHook(() => useInvestmentsApi());
+      const { result } = renderHook(() => useInvestmentsApi(), { wrapper });
       const { getProperties } = result.current;
 
       const error = getProperties();
