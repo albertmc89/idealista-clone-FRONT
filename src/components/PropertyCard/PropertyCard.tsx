@@ -1,3 +1,5 @@
+import { useAppDispatch } from "../../store";
+import { deletePropertyActionCreator } from "../../store/properties/propertiesSlice";
 import { Property } from "../../types";
 import Button from "../Button/Button";
 import "./PropertyCard.css";
@@ -16,8 +18,15 @@ const PropertyCard = ({
     description,
     image1,
     elevator,
+    id,
   },
 }: PropertyCardProps): React.ReactElement => {
+  const dispatch = useAppDispatch();
+
+  const deleteProperty = () => {
+    dispatch(deletePropertyActionCreator(id!));
+  };
+
   return (
     <article className="property">
       <div className="property__container">
@@ -63,6 +72,17 @@ const PropertyCard = ({
             text="View stats"
             actionOnClick={() => {}}
           />
+        </div>
+        <div className="property__button">
+          <button onClick={deleteProperty} className="button--circle">
+            <img
+              src="/img/DeleteForever.svg"
+              aria-label="delete logo vector"
+              className="delete-logo"
+              width={30}
+              height={30}
+            />
+          </button>
         </div>
       </div>
     </article>
