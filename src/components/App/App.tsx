@@ -8,6 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import paths from "../../paths/paths";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import LoginPage from "../../pages/LoginPage/LoginPage";
+import Loading from "../Loading/Loading";
 
 const App = (): React.ReactElement => {
   const [user] = useAuthState(auth);
@@ -30,6 +31,7 @@ const App = (): React.ReactElement => {
           <Route path={paths.login} element={<LoginPage />} />
         </Routes>
       </main>
+      <Loading />
     </>
   );
 };
