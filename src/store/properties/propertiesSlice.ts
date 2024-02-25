@@ -17,9 +17,19 @@ const propertiesSlice = createSlice({
       ...currentPropertiesState,
       properties: action.payload,
     }),
+    deleteProperty: (
+      currentPropertiesState,
+      action: PayloadAction<string>,
+    ): PropertyState => ({
+      properties: currentPropertiesState.properties.filter(
+        (property) => property.id !== action.payload,
+      ),
+    }),
   },
 });
 
 export const propertiesReducer = propertiesSlice.reducer;
-export const { loadProperties: loadPropertiesActionCreator } =
-  propertiesSlice.actions;
+export const {
+  loadProperties: loadPropertiesActionCreator,
+  deleteProperty: deletePropertyActionCreator,
+} = propertiesSlice.actions;
