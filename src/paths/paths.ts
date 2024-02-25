@@ -5,6 +5,7 @@ const paths: PathsStructure = {
   homepage: "/home",
   properties: "/properties",
   error: "/*",
+  login: "/login",
 };
 
 export default paths;

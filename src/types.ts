@@ -1,17 +1,17 @@
 export interface ApiProperty {
   _id: string;
   address: string;
-  price: number;
-  rooms: number;
-  meters: number;
-  year: number;
-  bathrooms: number;
+  price: string;
+  rooms: string;
+  meters: string;
+  year: string;
+  bathrooms: string;
   aircon: boolean;
-  consumption: number;
+  consumption: string;
   elevator: boolean;
   parking: boolean;
   heating: boolean;
-  emissions: number;
+  emissions: string;
   level: string;
   description: string;
   isFavourite: boolean;
@@ -21,7 +21,6 @@ export interface ApiProperty {
   image4: string;
   image5: string;
   user: string;
-  __v?: number;
 }
 
 export interface ApiProperties {

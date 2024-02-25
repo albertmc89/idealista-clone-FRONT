@@ -1,5 +1,5 @@
 :root {
-  --primaryColor: rgb(219, 244, 91);
+  --primaryColor: rgb(219, 244, 91, 0.88);
   --secondaryColor: rgb(165, 54, 127);
   --terciaryColor: #831c1c;
   --white: #fff;
