@@ -4,7 +4,7 @@
   flex-direction: column;
   color: white;
   width: 280px;
-  height: 420px;
+  height: 450px;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -17,7 +17,7 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 11px;
 }
 
 .property__data-container {
@@ -67,16 +67,24 @@
   border-radius: 5px;
   width: 100%;
 }
+
 .button--solid:hover {
   background-color: var(--white);
   color: var(--black);
   border: 1px dotted black;
 }
 
+.delete-logo,
+.property__button {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 765px) {
   .property {
     width: 700px;
-    height: 250px;
+    height: 275px;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -95,7 +103,7 @@
 
   .property__data-description {
     font-size: 0.7rem;
-    max-height: 55px;
+    max-height: 65px;
   }
 
   .property__description {
