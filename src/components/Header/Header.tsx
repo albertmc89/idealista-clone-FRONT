@@ -28,7 +28,7 @@ const Header = (): React.ReactElement => {
       </div>
       <Navigation />
       <Button
-        className="button--transparent-primary"
+        className="button--transparent-user"
         text="Log out"
         actionOnClick={logout}
       >
