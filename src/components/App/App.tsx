@@ -4,6 +4,8 @@ import PropertiesListPage from "../../pages/PropertiesListPage/PropertiesListPag
 import Header from "../Header/Header";
 import Homepage from "../../pages/Homepage/Homepage";
 import { auth } from "../../firebase";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import paths from "../../paths/paths";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -29,6 +31,7 @@ const App = (): React.ReactElement => {
           />
           <Route path={paths.login} element={<LoginPage />} />
         </Routes>
+        <ToastContainer />
       </main>
     </>
   );

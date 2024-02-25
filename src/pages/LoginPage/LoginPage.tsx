@@ -10,6 +10,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useState } from "react";
 import "./LoginPage.css";
 import Button from "../../components/Button/Button";
+import { showFeedbacks } from "../../components/Feedbacks/showFeedbacks";
 
 const LoginPage = (): React.ReactElement => {
   const [user] = useAuthState(auth);
@@ -27,6 +28,7 @@ const LoginPage = (): React.ReactElement => {
   const loginEmailPassword = async () => {
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+      showFeedbacks("Succesfully logged", "success");
     } catch (error) {
       throw new Error("Can't create the user");
     }
