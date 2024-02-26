@@ -89,3 +89,31 @@ export const selectedPropertyMock: ApiProperty = {
   image5: "string",
   user: "userId",
 };
+
+export const propertyCreatedMock = {
+  id: "7",
+  type: "Apartment",
+  city: "Barcelona",
+  address: "Calle Londres 9",
+  price: "120000",
+  rooms: "3",
+  meters: "78",
+  year: "1995",
+  bathrooms: "2",
+  aircon: false,
+  consumption: "150",
+  elevator: false,
+  parking: false,
+  heating: true,
+  emissions: "50",
+  level: "first floor",
+  description:
+    "The best Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius earum dolores dolorum, aliquid iste quos perspiciatis officia et, exercitationem beatae aliquam optio, veniam aut quod quis quae quia explicabo officiis.",
+  isFavourite: true,
+  image1: "./img/post-image.webp",
+  image2: "string",
+  image3: "string",
+  image4: "string",
+  image5: "string",
+  user: "userId",
+};
