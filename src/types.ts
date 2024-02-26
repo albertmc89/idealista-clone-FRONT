@@ -1,6 +1,8 @@
 export interface ApiProperty {
   _id: string;
+  type: string;
   address: string;
+  city: string;
   price: string;
   rooms: string;
   meters: string;

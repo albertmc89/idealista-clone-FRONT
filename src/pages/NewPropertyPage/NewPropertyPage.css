@@ -1,6 +1,7 @@
 .addproperty {
   min-height: 100vh;
   padding: 0 20px 40px 20px;
+  width: 100%;
 }
 
 .title {
@@ -20,6 +21,5 @@
   .addproperty {
     display: flex;
     flex-direction: column;
-    justify-content: center;
   }
 }
