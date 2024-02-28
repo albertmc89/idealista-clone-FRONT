@@ -82,7 +82,7 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           type="number"
           id="price"
           min="1"
-          value={newProperty.price}
+          value={newProperty.price === 0 ? "" : newProperty.price}
           className="form__input"
           onChange={changeNewProperty}
           required
@@ -123,7 +123,7 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           min="1"
           max="1000"
           id="meters"
-          value={newProperty.meters}
+          value={newProperty.meters === 0 ? "" : newProperty.meters}
           className="form__input"
           onChange={changeNewProperty}
           required
@@ -138,7 +138,7 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           min="1"
           max="20"
           id="rooms"
-          value={newProperty.rooms}
+          value={newProperty.rooms === 0 ? "" : newProperty.rooms}
           className="form__input"
           onChange={changeNewProperty}
           required
@@ -152,7 +152,7 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           type="number"
           id="bathrooms"
           min="1"
-          value={newProperty.bathrooms}
+          value={newProperty.bathrooms === 0 ? "" : newProperty.bathrooms}
           className="form__input"
           onChange={changeNewProperty}
           required
@@ -162,14 +162,30 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
         <label htmlFor="level" className="form__label">
           Level:
         </label>
-        <input
-          type="text"
+        <select
+          className="form-select"
+          name="level"
           id="level"
-          value={newProperty.level}
-          className="form__input"
           onChange={changeNewProperty}
           required
-        />
+        >
+          <option value="">-- Select --</option>
+          <option value="First">First</option>
+          <option value="Second">Second</option>
+          <option value="Third">Third</option>
+          <option value="Fourth">Fourth</option>
+          <option value="Fifth">Fifth</option>
+          <option value="Sixth">Sixth</option>
+          <option value="Seventh">Seventh</option>
+          <option value="Eighth">Eighth</option>
+          <option value="Ninth">Ninth</option>
+          <option value="Tenth">Tenth</option>
+          <option value="Eleventh">Eleventh</option>
+          <option value="Twelfth">Twelfth</option>
+          <option value="Thirteenth">Thirteenth</option>
+          <option value="Fourteenth">Fourteenth</option>
+          <option value="Fifteenth">Fifteenth</option>
+        </select>
       </div>
       <div className="form-control">
         <label htmlFor="elevator" className="form__label">
@@ -196,7 +212,7 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           id="year"
           min="1800"
           max="2040"
-          value={newProperty.year}
+          value={newProperty.year === 0 ? "" : newProperty.year}
           className="form__input"
           onChange={changeNewProperty}
           required
@@ -227,7 +243,7 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           id="consumption"
           min="0"
           max="10000"
-          value={newProperty.consumption}
+          value={newProperty.consumption === 0 ? "" : newProperty.consumption}
           className="form__input"
           onChange={changeNewProperty}
           required
@@ -242,7 +258,7 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           id="emissions"
           min="0"
           max="10000"
-          value={newProperty.emissions}
+          value={newProperty.emissions === 0 ? "" : newProperty.emissions}
           className="form__input"
           onChange={changeNewProperty}
           required

@@ -47,11 +47,16 @@ describe("Given a NewPropertyForm component", () => {
   const parkingText = "Yes";
   const emissionsNumber = 34;
   const descriptionText = "aa";
-  const image1Url = ",";
-  const image2Url = ",";
-  const image3Url = ",";
-  const image4Url = ",";
-  const image5Url = ",";
+  const image1Url =
+    "https://tarkettlatam.com/blog/wp-content/uploads/2023/09/5-living-sala-de-estar-piso-vinilico-amadeirado-regua-lvt-1-1536x1092-1.jpg";
+  const image2Url =
+    "https://tarkettlatam.com/blog/wp-content/uploads/2023/09/5-living-sala-de-estar-piso-vinilico-amadeirado-regua-lvt-1-1536x1092-1.jpg";
+  const image3Url =
+    "https://tarkettlatam.com/blog/wp-content/uploads/2023/09/5-living-sala-de-estar-piso-vinilico-amadeirado-regua-lvt-1-1536x1092-1.jpg";
+  const image4Url =
+    "https://tarkettlatam.com/blog/wp-content/uploads/2023/09/5-living-sala-de-estar-piso-vinilico-amadeirado-regua-lvt-1-1536x1092-1.jpg";
+  const image5Url =
+    "https://tarkettlatam.com/blog/wp-content/uploads/2023/09/5-living-sala-de-estar-piso-vinilico-amadeirado-regua-lvt-1-1536x1092-1.jpg";
 
   describe("When it's rendered", () => {
     test("Then it should show a 'Type of property:', 'Address:', 'City:', 'Price:', 'Rooms:', 'Meters:', 'Year:, 'Aircon:', 'Consumption:', 'Elevator:', 'Parking:, 'Heating:', 'Emissions:' fields", () => {
