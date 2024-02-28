@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../store";
 import PropertyCard from "../PropertyCard/PropertyCard";
+import "./PropertiesList.css";
 
 const PropertiesList = () => {
   const properties = useAppSelector(
