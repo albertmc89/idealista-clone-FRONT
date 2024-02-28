@@ -1,5 +1,10 @@
 import { rest } from "msw";
-import { apiMockProperties, selectedPropertyMock } from "./propertiesMock";
+import {
+  apiMockProperties,
+  handlerSelectedPropertyMock,
+  idPropertyMock,
+  selectedPropertyMock,
+} from "./propertiesMock";
 
 export const handlers = [
   rest.get(
@@ -25,6 +30,15 @@ export const handlers = [
       return res(ctx.status(201), ctx.json(apiMockProperties));
     },
   ),
+  rest.get(
+    `${import.meta.env.VITE_API_PROPERTIES_URL}properties/${idPropertyMock}`,
+    (_req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({ property: handlerSelectedPropertyMock }),
+      );
+    },
+  ),
 ];
 
 export const errorHandlers = [
@@ -46,6 +60,12 @@ export const errorHandlers = [
     `${import.meta.env.VITE_API_PROPERTIES_URL}properties`,
     (_req, res, ctx) => {
       return res(ctx.status(404, "Couldn't create property"));
+    },
+  ),
+  rest.get(
+    `${import.meta.env.VITE_API_PROPERTIES_URL}properties/${idPropertyMock}`,
+    (_req, res, ctx) => {
+      return res(ctx.status(404, "Can't load the property"));
     },
   ),
 ];
