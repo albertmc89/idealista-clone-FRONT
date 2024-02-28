@@ -49,7 +49,7 @@ describe("Given a PropertyCard component", () => {
   });
 
   test("Then it should show a text with 'sin ascensor' inside if the properties state is false", () => {
-    const mockPropertyFalseElevator = { ...propertiesMock[0], elevator: false };
+    const mockPropertyFalseElevator = { ...propertiesMock[0], elevator: "No" };
 
     const headingText = "sin ascensor";
 
@@ -67,7 +67,7 @@ describe("Given a PropertyCard component", () => {
   });
 
   test("Then it should show a text with 'sin ascensor' inside if the properties state is true", () => {
-    const mockPropertyTrueElevator = { ...propertiesMock[0], elevator: true };
+    const mockPropertyTrueElevator = { ...propertiesMock[0], elevator: "Yes" };
     const headingText = "con ascensor";
 
     render(

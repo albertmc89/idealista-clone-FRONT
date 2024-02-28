@@ -30,6 +30,7 @@ const LoginPage = (): React.ReactElement => {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       showFeedbacks("Succesfully logged", "success");
     } catch (error) {
+      showFeedbacks("Incorrect email or password", "error");
       throw new Error("Can't create the user");
     }
   };

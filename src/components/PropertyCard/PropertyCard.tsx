@@ -59,7 +59,7 @@ const PropertyCard = ({
             </li>
             <li className="property__data-detail">{level}</li>
             <li className="property__data">
-              {elevator === true ? (
+              {elevator === "Yes" ? (
                 <span className="property__data-label">con ascensor</span>
               ) : (
                 <span className="property__data-label">sin ascensor</span>

@@ -11,7 +11,7 @@ describe("Given a propertiesReducer reducer", () => {
         properties: [],
       };
 
-      const playerToDelete = currentPropertiesState.properties.find(
+      const propertyToDelete = currentPropertiesState.properties.find(
         ({ id }) => id !== propertyToDeleteId,
       );
       const propertyToDeleteId = "1";
@@ -23,7 +23,7 @@ describe("Given a propertiesReducer reducer", () => {
         deletePropertiesAction,
       );
 
-      expect(newPropertyState.properties).not.toContain(playerToDelete);
+      expect(newPropertyState.properties).not.toContain(propertyToDelete);
     });
   });
 });
