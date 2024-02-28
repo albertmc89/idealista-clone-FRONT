@@ -101,10 +101,45 @@ const useInvestmentsApi = () => {
     [apiUrl, user],
   );
 
+  const loadSelectedPropertyApi = useCallback(
+    async (id: string) => {
+      try {
+        dispatch(startLoadingActionCreator());
+        if (!user) {
+          throw Error();
+        }
+
+        const token = await user.getIdToken();
+
+        const { data: propertyDetail } = await axios.get(
+          `${apiUrl}properties/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+        );
+        dispatch(stopLoadingActionCreator());
+
+        showFeedbacks("Property successfully loaded", "success");
+        const property = {
+          ...propertyDetail.property,
+          id: propertyDetail.property._id,
+        };
+        delete property._id;
+
+        return property;
+      } catch (error: unknown) {
+        showFeedbacks("Couldn't load the property", "error");
+        throw new Error("Couldn't load the property");
+      }
+    },
+    [apiUrl, user, dispatch],
+  );
+
   return {
     getProperties,
     deletePropertyApi,
     addPropertyApi,
+    loadSelectedPropertyApi,
   };
 };
 
