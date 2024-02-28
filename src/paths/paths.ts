@@ -4,7 +4,7 @@ const paths: PathsStructure = {
   root: "/",
   homepage: "/home",
   properties: "/properties",
-  addproperty: "/addproperty",
+  addproperty: "/add-property",
   error: "/*",
   login: "/login",
 };

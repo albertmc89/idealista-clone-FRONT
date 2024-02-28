@@ -12,17 +12,17 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
       type: "",
       city: "",
       address: "",
-      price: "",
-      rooms: "",
-      meters: "",
-      year: "",
-      bathrooms: "",
-      aircon: false,
-      consumption: "",
-      elevator: false,
-      parking: false,
-      heating: false,
-      emissions: "",
+      price: 0,
+      rooms: 0,
+      meters: 0,
+      year: 0,
+      bathrooms: 0,
+      aircon: "",
+      consumption: 0,
+      elevator: "",
+      parking: "",
+      heating: "",
+      emissions: 0,
       level: "",
       description: "",
       isFavourite: false,
@@ -194,7 +194,7 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
         <input
           type="number"
           id="year"
-          min="1900"
+          min="1800"
           max="2040"
           value={newProperty.year}
           className="form__input"
@@ -293,16 +293,63 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
         />
       </div>
       <div className="form-control">
-        <label htmlFor="image" className="form__label">
+        <label htmlFor="image1" className="form__label">
           Image:
         </label>
         <input
           type="url"
-          id="image"
+          id="image1"
           value={newProperty.image1}
           className="form__input"
           onChange={changeNewProperty}
-          required
+        />
+      </div>
+      <div className="form-control">
+        <label htmlFor="image2" className="form__label">
+          Image 2:
+        </label>
+        <input
+          type="url"
+          id="image2"
+          value={newProperty.image2}
+          className="form__input"
+          onChange={changeNewProperty}
+        />
+      </div>
+      <div className="form-control">
+        <label htmlFor="image3" className="form__label">
+          Image 3:
+        </label>
+        <input
+          type="url"
+          id="image3"
+          value={newProperty.image3}
+          className="form__input"
+          onChange={changeNewProperty}
+        />
+      </div>
+      <div className="form-control">
+        <label htmlFor="image4" className="form__label">
+          Image 4:
+        </label>
+        <input
+          type="url"
+          id="image4"
+          value={newProperty.image4}
+          className="form__input"
+          onChange={changeNewProperty}
+        />
+      </div>
+      <div className="form-control">
+        <label htmlFor="image5" className="form__label">
+          Image 5:
+        </label>
+        <input
+          type="url"
+          id="image5"
+          value={newProperty.image5}
+          className="form__input"
+          onChange={changeNewProperty}
         />
       </div>
       <div className="form-control">

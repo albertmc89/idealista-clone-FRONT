@@ -39,8 +39,8 @@ const PropertiesListPage = (): React.ReactElement => {
             <h2 className="properties-title">Properties</h2>
             <div className="empty-container">
               <span className="empty-content" aria-label="content">
-                THERE IS NO PLAYERS ON THE LIST, CLICK ADD TO START ADDING
-                PLAYERS
+                THERE IS NO PROPERTIES ON THE LIST, CLICK ADD TO START ADDING
+                PROPERTIES
               </span>
               <NavLink to={paths.homepage} className="button button--solid">
                 Add

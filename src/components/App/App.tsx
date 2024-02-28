@@ -45,9 +45,7 @@ const App = (): React.ReactElement => {
             path={paths.addproperty}
             element={
               <ProtectedRoute>
-                <Suspense>
-                  <NewPropertyPage />
-                </Suspense>
+                <NewPropertyPage />
               </ProtectedRoute>
             }
           />

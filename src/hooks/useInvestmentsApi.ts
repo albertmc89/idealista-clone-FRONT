@@ -63,6 +63,7 @@ const useInvestmentsApi = () => {
             headers: { Authorization: `Bearer ${token}` },
           },
         );
+
         dispatch(stopLoadingActionCreator());
 
         showFeedbacks("Property successfully deleted", "success");
@@ -75,9 +76,35 @@ const useInvestmentsApi = () => {
     [apiUrl, user, dispatch],
   );
 
+  const addPropertyApi = useCallback(
+    async (newProperty: Omit<Property, "id" | "user">) => {
+      try {
+        if (user) {
+          const token = await user.getIdToken();
+
+          const { data: addedNewProperty } = await axios.post<Property>(
+            `${apiUrl}properties`,
+            newProperty,
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            },
+          );
+
+          showFeedbacks("Property successfully added", "success");
+          return addedNewProperty;
+        }
+      } catch (error: unknown) {
+        showFeedbacks("Couldn't add property", "error");
+        throw new Error("Couldn't add property");
+      }
+    },
+    [apiUrl, user],
+  );
+
   return {
     getProperties,
     deletePropertyApi,
+    addPropertyApi,
   };
 };
 

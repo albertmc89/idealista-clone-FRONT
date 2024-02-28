@@ -1,6 +1,6 @@
 import {
   propertiesMock,
-  propertyCreatedMock,
+  propertyCreatedApiMock,
 } from "../../../mocks/propertiesMock";
 import { PropertyState } from "../../types";
 import {
@@ -15,14 +15,16 @@ describe("Given a propertiesReducer reducer", () => {
         properties: propertiesMock,
       };
 
-      const addPropertyAction = addPropertyActionCreator(propertyCreatedMock);
+      const addPropertyAction = addPropertyActionCreator(
+        propertyCreatedApiMock,
+      );
 
       const newUserState = propertiesReducer(
         currentPropertiesState,
         addPropertyAction,
       );
 
-      expect(newUserState.properties).toContain(propertyCreatedMock);
+      expect(newUserState.properties).toContain(propertyCreatedApiMock);
       expect(newUserState.properties).toHaveLength(
         currentPropertiesState.properties.length + 1,
       );
