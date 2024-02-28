@@ -31,6 +31,13 @@ const propertiesSlice = createSlice({
     ): PropertyState => ({
       properties: [...currentPropertiesState.properties, action.payload],
     }),
+    loadSelectedProperty: (
+      currentPropertiesState: PropertyState,
+      action: PayloadAction<Property>,
+    ): PropertyState => ({
+      ...currentPropertiesState,
+      selectedProperty: action.payload,
+    }),
   },
 });
 
@@ -39,4 +46,5 @@ export const {
   loadProperties: loadPropertiesActionCreator,
   deleteProperty: deletePropertyActionCreator,
   addProperty: addPropertyActionCreator,
+  loadSelectedProperty: loadSelectedPropertyActionCreator,
 } = propertiesSlice.actions;
