@@ -4,6 +4,7 @@ import Navigation from "../Navigation/Navigation";
 import "./Header.css";
 import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
+import logo from "/img/logo.png";
 
 const Header = (): React.ReactElement => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Header = (): React.ReactElement => {
       <div className="title-container">
         <img
           className="title__logo"
-          src="./img/logo.png"
+          src={logo}
           alt="black and white building logo"
           height="40"
           width="40"
