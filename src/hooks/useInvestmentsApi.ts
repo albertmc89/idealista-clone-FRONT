@@ -120,6 +120,7 @@ const useInvestmentsApi = () => {
         dispatch(stopLoadingActionCreator());
 
         showFeedbacks("Property successfully loaded", "success");
+
         const property = {
           ...propertyDetail.property,
           id: propertyDetail.property._id,

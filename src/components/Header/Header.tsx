@@ -4,7 +4,7 @@ import Navigation from "../Navigation/Navigation";
 import "./Header.css";
 import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
-import logo from "/img/logo.png";
+import logo from "../../../public/img/logo.png";
 
 const Header = (): React.ReactElement => {
   const navigate = useNavigate();

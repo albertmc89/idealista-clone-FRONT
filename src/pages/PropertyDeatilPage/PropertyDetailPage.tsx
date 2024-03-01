@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { auth } from "../../firebase";
 import "./PropertyDetailPage.css";
 import paths from "../../paths/paths";
-import back from "/img/back.png";
+import back from "../../../public/img/back.png";
 
 const PropertyDetailPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
