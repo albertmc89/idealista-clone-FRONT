@@ -4,7 +4,7 @@
   flex-direction: column;
   color: white;
   width: 280px;
-  height: 450px;
+  height: 420px;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -53,7 +53,7 @@
 .property__data {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
 }
 
 .property__data-description {
@@ -68,23 +68,22 @@
   overflow: hidden;
 }
 
-.button--solid {
+.link--solid {
   padding: 7px;
   border-radius: 5px;
-  width: 100%;
 }
 
-.button--solid:hover {
-  background-color: var(--white);
-  color: var(--black);
-  border: 1px dotted black;
+.link--solid:hover {
+  color: rgb(21, 203, 235);
 }
 
 .delete-logo,
 .property__button {
   background-color: transparent;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15px;
 }
 
 @media (min-width: 765px) {
