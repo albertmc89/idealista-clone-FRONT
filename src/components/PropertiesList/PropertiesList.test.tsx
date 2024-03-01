@@ -3,6 +3,7 @@ import { propertiesMock } from "../../mocks/propertiesMock";
 import { setupStore } from "../../store";
 import { Provider } from "react-redux";
 import PropertiesList from "./PropertiesList";
+import { BrowserRouter } from "react-router-dom";
 
 describe("Given a PropertiesList component", () => {
   describe("When it's rendered 'Calle Londres 9'", () => {
@@ -12,9 +13,11 @@ describe("Given a PropertiesList component", () => {
       });
 
       render(
-        <Provider store={store}>
-          <PropertiesList />
-        </Provider>,
+        <BrowserRouter>
+          <Provider store={store}>
+            <PropertiesList />
+          </Provider>
+        </BrowserRouter>,
       );
 
       propertiesMock.forEach((property) => {

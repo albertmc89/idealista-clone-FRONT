@@ -1,12 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
-import auth, { AuthStateHook } from "react-firebase-hooks/auth";
+import auth, { AuthStateHook, IdTokenHook } from "react-firebase-hooks/auth";
 import { Auth, User, signInWithPopup, signOut } from "firebase/auth";
 import userEvent from "@testing-library/user-event";
-import { store } from "../../store";
+import { setupStore, store } from "../../store";
 import { Provider } from "react-redux";
 import paths from "../../paths/paths";
+import { propertiesMock } from "../../mocks/propertiesMock";
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -183,6 +184,80 @@ describe("Given a App component", () => {
 
       expect(heading).toBeInTheDocument();
       expect(toast).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user clicks on view details link", () => {
+    test("Then it should navigate to detail page and show 'Calle Londres 9, Barcelona' inside a heading", async () => {
+      const authStateHookMock: Partial<AuthStateHook> = [user as User];
+      auth.useAuthState = vi.fn().mockReturnValue(authStateHookMock);
+
+      const useIdTokenHookMock: Partial<IdTokenHook> = [user as User];
+      auth.useIdToken = vi.fn().mockReturnValue(useIdTokenHookMock);
+
+      const store = setupStore({
+        propertiesState: { properties: propertiesMock },
+      });
+      const path = paths.properties;
+      const pathDetail = "/properties/64fb2a9470bf0a89283a4a88";
+      const linkText = "View details";
+      const propertyText = "Building";
+
+      render(
+        <MemoryRouter initialEntries={[path, pathDetail]} initialIndex={0}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+      const detailLink = await screen.findAllByRole("link", {
+        name: linkText,
+      });
+
+      await userEvent.click(detailLink[0]);
+
+      const heading = await screen.findByRole("heading", {
+        name: propertyText,
+      });
+
+      expect(heading).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user clicks on button with text 'More...'", () => {
+    test("Then it show the full description", async () => {
+      const pathDetail = "/properties/64fb2a9470bf0a89283a4a88";
+      const authStateHookMock: Partial<AuthStateHook> = [user as User];
+      auth.useAuthState = vi.fn().mockReturnValue(authStateHookMock);
+
+      const useIdTokenHookMock: Partial<IdTokenHook> = [user as User];
+      auth.useIdToken = vi.fn().mockReturnValue(useIdTokenHookMock);
+
+      const store = setupStore({
+        propertiesState: { properties: propertiesMock },
+      });
+      const buttonText = "More...";
+      const fullDescription =
+        "¡Bienvenido al paraíso de la vida en Alella!Descubre la comodidad y el lujo de vivir en uno de los mejores pueblos de Barcelona: Alella. Este exquisito piso de 78 metros cuadrados te brinda una experiencia de vida única que no querrás dejar escapar.Este encantador hogar cuenta con tres amplias habitaciones, perfectas para adaptarse a tus necesidades y brindarte el espacio que mereces. El piso también ofrece un baño completo y un aseo. Disfruta de las vistas panorámicas y la frescura del aire mediterráneo desde tu propio balcón privado. Un lugar perfecto para relajarte con una taza de café por la mañana o disfrutar de las puestas de sol de ensueño por la noche. El piso se encuentra semiamueblado, lo que te brinda la flexibilidad para personalizarlo a tu gusto y crear el ambiente perfecto para ti y tu familia. Pero eso no es todo, este complejo residencial ofrece una piscina comunitaria donde podrás darte un chapuzón y disfrutar del sol en los cálidos días de verano. Además, tendrás un trastero a tu disposición para almacenar tus pertenencias de forma organizada y sin complicaciones. Esta es tu oportunidad de vivir en uno de los lugares más codiciados a solo 20min de Barcelona, en un piso que lo tiene todo. No pierdas la oportunidad de hacer de este lugar tu nuevo hogar. ¡Llámanos ahora para programar una visita y experimentar la vida en Alella en su máxima expresión!";
+
+      render(
+        <MemoryRouter initialEntries={[pathDetail]} initialIndex={0}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+      const moreButton = await screen.findByRole("button", {
+        name: buttonText,
+      });
+
+      await userEvent.click(moreButton);
+
+      const descriptionAppears = await screen.findByText(fullDescription);
+
+      expect(descriptionAppears).toBeInTheDocument();
     });
   });
 });

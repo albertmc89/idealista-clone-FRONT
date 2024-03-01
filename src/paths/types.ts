@@ -5,4 +5,5 @@ export interface PathsStructure {
   addproperty: string;
   error: string;
   login: string;
+  detailpage: string;
 }

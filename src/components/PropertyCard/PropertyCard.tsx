@@ -1,9 +1,10 @@
+import { NavLink } from "react-router-dom";
 import useInvestmentsApi from "../../hooks/useInvestmentsApi";
 import { useAppDispatch } from "../../store";
 import { deletePropertyActionCreator } from "../../store/properties/propertiesSlice";
 import { Property } from "../../types";
-import Button from "../Button/Button";
 import "./PropertyCard.css";
+import paths from "../../paths/paths";
 
 interface PropertyCardProps {
   property: Partial<Property>;
@@ -70,14 +71,10 @@ const PropertyCard = ({
             <p className="property__description">{description}</p>
           </div>
         </div>
-        <div className="button-container">
-          <Button
-            className="button button--solid"
-            text="View stats"
-            actionOnClick={() => {}}
-          />
-        </div>
         <div className="property__button">
+          <NavLink className="link--solid" to={`${paths.properties}/${id}`}>
+            View details
+          </NavLink>
           <button onClick={deleteProperty} className="button--circle">
             <img
               src="/img/DeleteForever.svg"

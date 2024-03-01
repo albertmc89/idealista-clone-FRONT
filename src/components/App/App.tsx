@@ -13,6 +13,7 @@ import LoginPage from "../../pages/LoginPage/LoginPage";
 import { Suspense } from "react";
 import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import NewPropertyPage from "../../pages/NewPropertyPage/NewPropertyPage";
+import PropertyDetailPage from "../../pages/PropertyDeatilPage/PropertyDetailPage";
 
 const App = (): React.ReactElement => {
   const [user] = useAuthState(auth);
@@ -46,6 +47,14 @@ const App = (): React.ReactElement => {
             element={
               <ProtectedRoute>
                 <NewPropertyPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={`${paths.properties}/:id`}
+            element={
+              <ProtectedRoute>
+                <PropertyDetailPage />
               </ProtectedRoute>
             }
           />
