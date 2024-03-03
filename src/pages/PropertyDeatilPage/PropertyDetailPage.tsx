@@ -128,30 +128,30 @@ const PropertyDetailPage = (): React.ReactElement => {
             <li className="list-features">Built in {selectedProperty?.year}</li>
             <li className="list-features">
               {selectedProperty?.parking === "Yes" ? (
-                <li className="list-features">With parking</li>
+                <span className="list-features">With parking</span>
               ) : (
-                <li className="list-features">No parking</li>
+                <span className="list-features">No parking</span>
               )}
             </li>
             <li className="list-features">
               {selectedProperty?.heating === "Yes" ? (
-                <li className="list-features">With heating</li>
+                <span className="list-features">With heating</span>
               ) : (
-                <li className="list-features">No heating</li>
+                <span className="list-features">No heating</span>
               )}
             </li>
             <li className="list-features">
               {selectedProperty?.aircon === "Yes" ? (
-                <li className="list-features">With aircon</li>
+                <span className="list-features">With aircon</span>
               ) : (
-                <li className="list-features">No aircon</li>
+                <span className="list-features">No aircon</span>
               )}
             </li>
             <li className="list-features">
               {selectedProperty?.elevator === "Yes" ? (
-                <li className="list-features">With lift</li>
+                <span className="list-features">With lift</span>
               ) : (
-                <li className="list-features">No lift</li>
+                <span className="list-features">No lift</span>
               )}
             </li>
           </ul>

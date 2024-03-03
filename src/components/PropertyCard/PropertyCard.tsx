@@ -32,6 +32,8 @@ const PropertyCard = ({
     dispatch(deletePropertyActionCreator(id!));
   };
 
+  const formatedPrice = price ? price.toLocaleString() : "";
+
   return (
     <article className="property">
       <div className="property__container">
@@ -47,7 +49,7 @@ const PropertyCard = ({
           <h2 className="property__address">{address}</h2>
           <div className="property__data">
             Mkt value:
-            <span className="property__data-price">{price}$</span>
+            <span className="property__data-price">{formatedPrice}$</span>
           </div>
           <ul className="property__data-list">
             <li className="property__data">
