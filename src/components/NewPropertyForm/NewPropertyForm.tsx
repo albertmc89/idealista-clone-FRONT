@@ -51,6 +51,10 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
     onSubmitProperty(newProperty);
   };
 
+  const formatedPrice = newProperty.price
+    ? newProperty.price.toLocaleString()
+    : "";
+
   return (
     <form className="form" onSubmit={submitForm}>
       <div className="form-control">
@@ -82,7 +86,7 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           type="number"
           id="price"
           min="1"
-          value={newProperty.price === 0 ? "" : newProperty.price}
+          value={formatedPrice}
           className="form__input"
           onChange={changeNewProperty}
           required

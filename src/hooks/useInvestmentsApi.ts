@@ -119,14 +119,12 @@ const useInvestmentsApi = () => {
         );
         dispatch(stopLoadingActionCreator());
 
-        showFeedbacks("Property successfully loaded", "success");
-
         const property = {
           ...propertyDetail.property,
           id: propertyDetail.property._id,
         };
         delete property._id;
-
+        showFeedbacks("Property successfully loaded", "success");
         return property;
       } catch (error: unknown) {
         showFeedbacks("Couldn't load the property", "error");

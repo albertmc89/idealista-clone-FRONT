@@ -260,4 +260,38 @@ describe("Given a App component", () => {
       expect(descriptionAppears).toBeInTheDocument();
     });
   });
+  describe("When the user clicks on hamburguer", () => {
+    test("Then it show the full description", async () => {
+      const pathDetail = "/properties";
+      const authStateHookMock: Partial<AuthStateHook> = [user as User];
+      auth.useAuthState = vi.fn().mockReturnValue(authStateHookMock);
+
+      const useIdTokenHookMock: Partial<IdTokenHook> = [user as User];
+      auth.useIdToken = vi.fn().mockReturnValue(useIdTokenHookMock);
+
+      const store = setupStore({
+        propertiesState: { properties: propertiesMock },
+      });
+      const buttonText = "menu bars";
+      const navText = "Home";
+
+      render(
+        <MemoryRouter initialEntries={[pathDetail]}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+      const moreButton = await screen.findByRole("button", {
+        name: buttonText,
+      });
+
+      await userEvent.click(moreButton);
+
+      const menuAppears = await screen.findAllByText(navText);
+
+      expect(menuAppears[0]).toBeInTheDocument();
+    });
+  });
 });
