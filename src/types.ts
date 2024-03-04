@@ -16,12 +16,12 @@ export interface ApiProperty {
   emissions: number;
   level: string;
   description: string;
-  isFavourite: boolean;
+  isRented: boolean;
   image1: string;
-  image2: string;
-  image3: string;
-  image4: string;
-  image5: string;
+  image2?: string;
+  image3?: string;
+  image4?: string;
+  image5?: string;
   user: string;
 }
 
