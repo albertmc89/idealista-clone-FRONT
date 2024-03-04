@@ -134,11 +134,44 @@ const useInvestmentsApi = () => {
     [apiUrl, user, dispatch],
   );
 
+  const modifyPropertyApi = useCallback(
+    async (id: string, isRented: boolean) => {
+      try {
+        if (!user) {
+          throw Error();
+        }
+
+        const token = await user.getIdToken();
+
+        const { data: propertyDetail } = await axios.patch(
+          `${apiUrl}properties/${id}`,
+          { isRented },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+        );
+
+        const property = {
+          ...propertyDetail.property,
+          id: propertyDetail.property._id,
+        };
+        delete property._id;
+
+        return property;
+      } catch (error: unknown) {
+        showFeedbacks("Couldn't modify property", "error");
+        throw new Error("Couldn't modify the property");
+      }
+    },
+    [apiUrl, user],
+  );
+
   return {
     getProperties,
     deletePropertyApi,
     addPropertyApi,
     loadSelectedPropertyApi,
+    modifyPropertyApi,
   };
 };
 

@@ -47,9 +47,9 @@ describe("Given function loadSelectedPropertyApi from useInvestmentsApi custom h
       });
       const { loadSelectedPropertyApi } = result.current;
 
-      const selectedPlayer = await loadSelectedPropertyApi(id);
+      const selectedProperty = await loadSelectedPropertyApi(id);
 
-      expect(selectedPlayer).toStrictEqual(mySelectedPropertyMock);
+      expect(selectedProperty).toStrictEqual(mySelectedPropertyMock);
     });
   });
 
@@ -61,9 +61,9 @@ describe("Given function loadSelectedPropertyApi from useInvestmentsApi custom h
       const { result } = renderHook(() => useInvestmentsApi(), { wrapper });
       const { loadSelectedPropertyApi } = result.current;
 
-      const selectedPlayer = loadSelectedPropertyApi(id);
+      const selectedProperty = loadSelectedPropertyApi(id);
 
-      expect(selectedPlayer).rejects.toThrowError(error);
+      expect(selectedProperty).rejects.toThrowError(error);
     });
   });
 

@@ -16,12 +16,12 @@ describe("Given a properties slice", () => {
         ...propertiesMock[0],
         isRented: true,
       });
-      const newPlayersState = propertiesReducer(
+      const newPropertiesState = propertiesReducer(
         currentPropertiesState,
         toggleIsRentedAction,
       );
 
-      expect(newPlayersState.properties[0]).toHaveProperty("isRented", true);
+      expect(newPropertiesState.properties[0]).toHaveProperty("isRented", true);
     });
   });
 });

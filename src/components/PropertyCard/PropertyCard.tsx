@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import useInvestmentsApi from "../../hooks/useInvestmentsApi";
 import { useAppDispatch } from "../../store";
-import { deletePropertyActionCreator } from "../../store/properties/propertiesSlice";
+import {
+  deletePropertyActionCreator,
+  togglePropertyActionCreator,
+} from "../../store/properties/propertiesSlice";
 import { Property } from "../../types";
 import "./PropertyCard.css";
 import paths from "../../paths/paths";
@@ -27,7 +30,7 @@ const PropertyCard = ({
   },
 }: PropertyCardProps): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const { deletePropertyApi } = useInvestmentsApi();
+  const { deletePropertyApi, modifyPropertyApi } = useInvestmentsApi();
 
   const deleteProperty = async () => {
     await deletePropertyApi(id!);
@@ -35,9 +38,11 @@ const PropertyCard = ({
     dispatch(deletePropertyActionCreator(id!));
   };
 
-  // const toggleProperty = async () => {
-  //   dispatch(togglePropertyActionCreator(id!));
-  // };
+  const toggleProperty = async () => {
+    const toggledProperty = await modifyPropertyApi(id!, isRented!);
+
+    dispatch(togglePropertyActionCreator(toggledProperty));
+  };
 
   const formatedPrice = price ? price.toLocaleString() : "";
 
@@ -48,7 +53,7 @@ const PropertyCard = ({
           <Button
             className={isRented ? "rented" : "not rented"}
             text={isRented ? "rented" : "not rented"}
-            actionOnClick={() => {}}
+            actionOnClick={toggleProperty}
           />
         </div>
         <img

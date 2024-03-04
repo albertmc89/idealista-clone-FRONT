@@ -39,6 +39,15 @@ export const handlers = [
       );
     },
   ),
+  rest.patch(
+    `${import.meta.env.VITE_API_PROPERTIES_URL}properties/${idPropertyMock}`,
+    (_req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({ property: handlerSelectedPropertyMock }),
+      );
+    },
+  ),
 ];
 
 export const errorHandlers = [
@@ -63,6 +72,12 @@ export const errorHandlers = [
     },
   ),
   rest.get(
+    `${import.meta.env.VITE_API_PROPERTIES_URL}properties/${idPropertyMock}`,
+    (_req, res, ctx) => {
+      return res(ctx.status(404, "Can't load the property"));
+    },
+  ),
+  rest.patch(
     `${import.meta.env.VITE_API_PROPERTIES_URL}properties/${idPropertyMock}`,
     (_req, res, ctx) => {
       return res(ctx.status(404, "Can't load the property"));
