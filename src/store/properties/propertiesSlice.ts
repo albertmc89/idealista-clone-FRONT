@@ -38,6 +38,16 @@ const propertiesSlice = createSlice({
       ...currentPropertiesState,
       selectedProperty: action.payload,
     }),
+    toggleProperty: (
+      currentPropertiesState,
+      action: PayloadAction<Property>,
+    ): PropertyState => ({
+      ...currentPropertiesState,
+      selectedProperty: action.payload,
+      properties: currentPropertiesState.properties.map((property) =>
+        property.id === action.payload.id ? action.payload : property,
+      ),
+    }),
   },
 });
 
@@ -47,4 +57,5 @@ export const {
   deleteProperty: deletePropertyActionCreator,
   addProperty: addPropertyActionCreator,
   loadSelectedProperty: loadSelectedPropertyActionCreator,
+  toggleProperty: togglePropertyActionCreator,
 } = propertiesSlice.actions;

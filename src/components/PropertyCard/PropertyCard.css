@@ -17,6 +17,9 @@
 
 .property__container {
   object-fit: cover;
+  display: flex;
+  align-items: start;
+  justify-content: end;
 }
 
 .property__content {
@@ -83,6 +86,21 @@
   justify-content: space-evenly;
   align-items: center;
   gap: 15px;
+}
+
+.button-container__card {
+  position: absolute;
+  padding: 10px;
+}
+
+.rented {
+  border-radius: 10px;
+  background: var(--white);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 5px;
+  font-weight: 700;
+  color: rgb(177, 16, 16);
 }
 
 @media (min-width: 765px) {

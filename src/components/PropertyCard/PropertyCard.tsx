@@ -6,6 +6,8 @@ import { Property } from "../../types";
 import "./PropertyCard.css";
 import paths from "../../paths/paths";
 
+import Button from "../Button/Button";
+
 interface PropertyCardProps {
   property: Partial<Property>;
 }
@@ -21,6 +23,7 @@ const PropertyCard = ({
     image1,
     elevator,
     id,
+    isRented,
   },
 }: PropertyCardProps): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -32,11 +35,22 @@ const PropertyCard = ({
     dispatch(deletePropertyActionCreator(id!));
   };
 
+  // const toggleProperty = async () => {
+  //   dispatch(togglePropertyActionCreator(id!));
+  // };
+
   const formatedPrice = price ? price.toLocaleString() : "";
 
   return (
     <article className="property">
       <div className="property__container">
+        <div className="button-container__card">
+          <Button
+            className={isRented ? "rented" : "not rented"}
+            text={isRented ? "rented" : "not rented"}
+            actionOnClick={() => {}}
+          />
+        </div>
         <img
           className="property__picture"
           src={image1}

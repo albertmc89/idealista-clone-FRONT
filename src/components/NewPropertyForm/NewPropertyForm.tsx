@@ -25,7 +25,7 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
       emissions: 0,
       level: "",
       description: "",
-      isFavourite: false,
+      isRented: false,
       image1: "",
       image2: "",
       image3: "",
