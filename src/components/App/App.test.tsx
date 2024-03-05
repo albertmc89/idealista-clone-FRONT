@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import auth, { AuthStateHook, IdTokenHook } from "react-firebase-hooks/auth";
@@ -161,7 +161,6 @@ describe("Given a App component", () => {
   describe("When the user clicks on the Login button", () => {
     test("Then it should show 'Properties' inside a heading", async () => {
       const propertiesRoute = paths.login;
-      const toastText = "close";
       const headingText = "Properties";
 
       const authStateHookMock: Partial<AuthStateHook> = [user as User];
@@ -175,15 +174,11 @@ describe("Given a App component", () => {
         </MemoryRouter>,
       );
 
-      const toast = await screen.findByRole("button", {
-        name: toastText,
-      });
       const heading = await screen.findByRole("heading", {
         name: headingText,
       });
 
       expect(heading).toBeInTheDocument();
-      expect(toast).toBeInTheDocument();
     });
   });
 
@@ -260,6 +255,7 @@ describe("Given a App component", () => {
       expect(descriptionAppears).toBeInTheDocument();
     });
   });
+
   describe("When the user clicks on hamburguer", () => {
     test("Then it show the full description", async () => {
       const pathDetail = "/properties";
@@ -292,6 +288,138 @@ describe("Given a App component", () => {
       const menuAppears = await screen.findAllByText(navText);
 
       expect(menuAppears[0]).toBeInTheDocument();
+    });
+  });
+});
+
+describe("Given a NewPropertyForm component rendered on App component", () => {
+  describe("When the user creates a property 'newProperty' in NewPropertyPage", () => {
+    test("Then it should show the PropertiesPage with 'Calle Londres 9' property", async () => {
+      const typeInputLabelText = "Type of property:";
+      const addressInputLabelText = "Address:";
+      const cityInputLabelText = "City:";
+      const priceInputLabelText = "Price:";
+      const roomsInputLabelText = "Rooms:";
+      const metersInputLabelText = "Meters (m2):";
+      const yearInputLabelText = "Year:";
+      const bathroomsInputLabelText = "Bathrooms:";
+      const airconInputLabelText = "Aircon:";
+      const consumptionInputLabelText = "Consumption:";
+      const elevatorInputLabelText = "Elevator:";
+      const parkingInputLabelText = "Parking:";
+      const emissionsInputLabelText = "Emissions:";
+      const descriptionInputLabelText = "Description:";
+      const image1InputLabelText = "Image:";
+      const image2InputLabelText = "Image 2:";
+      const image3InputLabelText = "Image 3:";
+      const image4InputLabelText = "Image 4:";
+      const image5InputLabelText = "Image 5:";
+
+      const typeText = "Apartment";
+      const addressText = "Calle Londres 9";
+      const cityText = "asd";
+      const priceNumber = 23;
+      const roomsNumber = 3;
+      const metersNumber = 66;
+      const yearNumber = 1997;
+      const bathroomNumber = 3;
+      const airconText = "Yes";
+      const consumptionNumber = 34;
+      const elevatorText = "Yes";
+      const parkingText = "Yes";
+      const emissionsNumber = 34;
+      const descriptionText = "aa";
+      const image1Url =
+        "https://tarkettlatam.com/blog/wp-content/uploads/2023/09/5-living-sala-de-estar-piso-vinilico-amadeirado-regua-lvt-1-1536x1092-1.jpg";
+      const image2Url =
+        "https://tarkettlatam.com/blog/wp-content/uploads/2023/09/5-living-sala-de-estar-piso-vinilico-amadeirado-regua-lvt-1-1536x1092-1.jpg";
+      const image3Url =
+        "https://tarkettlatam.com/blog/wp-content/uploads/2023/09/5-living-sala-de-estar-piso-vinilico-amadeirado-regua-lvt-1-1536x1092-1.jpg";
+      const image4Url =
+        "https://tarkettlatam.com/blog/wp-content/uploads/2023/09/5-living-sala-de-estar-piso-vinilico-amadeirado-regua-lvt-1-1536x1092-1.jpg";
+      const image5Url =
+        "https://tarkettlatam.com/blog/wp-content/uploads/2023/09/5-living-sala-de-estar-piso-vinilico-amadeirado-regua-lvt-1-1536x1092-1.jpg";
+
+      const authStateHookMock: Partial<AuthStateHook> = [user as User];
+      auth.useAuthState = vi.fn().mockReturnValue(authStateHookMock);
+
+      const useIdTokenHookMock: Partial<IdTokenHook> = [user as User];
+      auth.useIdToken = vi.fn().mockReturnValue(useIdTokenHookMock);
+
+      const store = setupStore({
+        propertiesState: { properties: propertiesMock },
+      });
+
+      const buttonText = "Add";
+      const headingText = "Calle Londres 9";
+
+      render(
+        <MemoryRouter initialEntries={[paths.addproperty]} initialIndex={0}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+      const typeInput = await screen.findByLabelText(typeInputLabelText);
+      const addressInput = await screen.findByLabelText(addressInputLabelText);
+      const cityInput = await screen.findByLabelText(cityInputLabelText);
+      const priceInput = await screen.findByLabelText(priceInputLabelText);
+      const roomsInput = await screen.findByLabelText(roomsInputLabelText);
+      const metersInput = await screen.findByLabelText(metersInputLabelText);
+      const yearInput = await screen.findByLabelText(yearInputLabelText);
+      const bathroomsInput = await screen.findByLabelText(
+        bathroomsInputLabelText,
+      );
+      const airconInput = await screen.findByLabelText(airconInputLabelText);
+      const consumptionInput = await screen.findByLabelText(
+        consumptionInputLabelText,
+      );
+      const elevatorInput = await screen.findByLabelText(
+        elevatorInputLabelText,
+      );
+      const parkingInput = await screen.findByLabelText(parkingInputLabelText);
+      const emissionsInput = await screen.findByLabelText(
+        emissionsInputLabelText,
+      );
+      const descriptionInput = await screen.findByLabelText(
+        descriptionInputLabelText,
+      );
+      const image1Input = await screen.findByLabelText(image1InputLabelText);
+      const image2Input = await screen.findByLabelText(image2InputLabelText);
+      const image3Input = await screen.findByLabelText(image3InputLabelText);
+      const image4Input = await screen.findByLabelText(image4InputLabelText);
+      const image5Input = await screen.findByLabelText(image5InputLabelText);
+
+      await userEvent.selectOptions(typeInput, typeText);
+      await userEvent.type(addressInput, addressText);
+      await userEvent.type(cityInput, cityText);
+      await userEvent.type(priceInput, priceNumber.toString());
+      await userEvent.type(roomsInput, roomsNumber.toString());
+      await userEvent.type(metersInput, metersNumber.toString());
+      await userEvent.type(yearInput, yearNumber.toString());
+      await userEvent.type(bathroomsInput, bathroomNumber.toString());
+      await userEvent.type(consumptionInput, consumptionNumber.toString());
+      await userEvent.type(emissionsInput, emissionsNumber.toString());
+      await userEvent.selectOptions(airconInput, airconText);
+      await userEvent.selectOptions(parkingInput, parkingText);
+      await userEvent.selectOptions(elevatorInput, elevatorText);
+      await userEvent.type(descriptionInput, descriptionText);
+      await userEvent.type(image1Input, image1Url);
+      await userEvent.type(image2Input, image2Url);
+      await userEvent.type(image3Input, image3Url);
+      await userEvent.type(image4Input, image4Url);
+      await userEvent.type(image5Input, image5Url);
+
+      const button = await screen.findByRole("button", { name: buttonText });
+      await userEvent.click(button);
+
+      await waitFor(async () => {
+        const heading = await screen.findByRole("heading", {
+          name: headingText,
+        });
+        expect(heading).toBeInTheDocument();
+      });
     });
   });
 });

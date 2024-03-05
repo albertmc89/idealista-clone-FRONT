@@ -3,14 +3,8 @@ import { Provider } from "react-redux";
 import { store } from "../../store";
 import userEvent from "@testing-library/user-event";
 import NewPropertyForm from "./NewPropertyForm";
-import auth, { AuthStateHook } from "react-firebase-hooks/auth";
-import { User } from "@firebase/auth";
 
 const onSubmitProperty = vi.fn();
-
-const user: Partial<User> = {};
-const authStateHookMock: Partial<AuthStateHook> = [user as User];
-auth.useAuthState = vi.fn().mockReturnValue(authStateHookMock);
 
 describe("Given a NewPropertyForm component", () => {
   const typeInputLabelText = "Type of property:";
@@ -60,11 +54,7 @@ describe("Given a NewPropertyForm component", () => {
 
   describe("When it's rendered", () => {
     test("Then it should show a 'Type of property:', 'Address:', 'City:', 'Price:', 'Rooms:', 'Meters:', 'Year:, 'Aircon:', 'Consumption:', 'Elevator:', 'Parking:, 'Heating:', 'Emissions:' fields", () => {
-      render(
-        <Provider store={store}>
-          <NewPropertyForm onSubmitProperty={onSubmitProperty} />
-        </Provider>,
-      );
+      render(<NewPropertyForm onSubmitProperty={onSubmitProperty} />);
 
       const typeInput = screen.getByLabelText(typeInputLabelText);
       const addressInput = screen.getByLabelText(addressInputLabelText);
@@ -177,60 +167,111 @@ describe("Given a NewPropertyForm component", () => {
     });
   });
 
-  // describe("When all inputs are filled and the user submits the form", () => {
-  //   test("Then the action on submit function should be called", async () => {
-  //     const buttonText = "Add";
+  describe("When inputs are filled", () => {
+    test("Then it should show an enabled button", async () => {
+      const buttonText = "Add";
 
-  //     render(
-  //       <Provider store={store}>
-  //         <NewPropertyForm onSubmitProperty={onSubmitProperty} />
-  //       </Provider>,
-  //     );
+      render(
+        <Provider store={store}>
+          <NewPropertyForm onSubmitProperty={onSubmitProperty} />
+        </Provider>,
+      );
 
-  //     const typeInput = screen.getByLabelText(typeInputLabelText);
-  //     const addressInput = screen.getByLabelText(addressInputLabelText);
-  //     const cityInput = screen.getByLabelText(cityInputLabelText);
-  //     const priceInput = screen.getByLabelText(priceInputLabelText);
-  //     const roomsInput = screen.getByLabelText(roomsInputLabelText);
-  //     const metersInput = screen.getByLabelText(metersInputLabelText);
-  //     const yearInput = screen.getByLabelText(yearInputLabelText);
-  //     const bathroomsInput = screen.getByLabelText(bathroomsInputLabelText);
-  //     const airconInput = screen.getByLabelText(airconInputLabelText);
-  //     const consumptionInput = screen.getByLabelText(consumptionInputLabelText);
-  //     const elevatorInput = screen.getByLabelText(elevatorInputLabelText);
-  //     const parkingInput = screen.getByLabelText(parkingInputLabelText);
-  //     const descriptionInput = screen.getByLabelText(descriptionInputLabelText);
-  //     const emissionsInput = screen.getByLabelText(emissionsInputLabelText);
-  //     const image1Input = screen.getByLabelText(image1InputLabelText);
-  //     const image2Input = screen.getByLabelText(image2InputLabelText);
-  //     const image3Input = screen.getByLabelText(image3InputLabelText);
-  //     const image4Input = screen.getByLabelText(image4InputLabelText);
-  //     const image5Input = screen.getByLabelText(image5InputLabelText);
+      const typeInput = screen.getByLabelText(typeInputLabelText);
+      const addressInput = screen.getByLabelText(addressInputLabelText);
+      const cityInput = screen.getByLabelText(cityInputLabelText);
+      const priceInput = screen.getByLabelText(priceInputLabelText);
+      const roomsInput = screen.getByLabelText(roomsInputLabelText);
+      const metersInput = screen.getByLabelText(metersInputLabelText);
+      const yearInput = screen.getByLabelText(yearInputLabelText);
+      const bathroomsInput = screen.getByLabelText(bathroomsInputLabelText);
+      const airconInput = screen.getByLabelText(airconInputLabelText);
+      const consumptionInput = screen.getByLabelText(consumptionInputLabelText);
+      const elevatorInput = screen.getByLabelText(elevatorInputLabelText);
+      const parkingInput = screen.getByLabelText(parkingInputLabelText);
+      const emissionsInput = screen.getByLabelText(emissionsInputLabelText);
+      const descriptionInput = screen.getByLabelText(descriptionInputLabelText);
+      const image1Input = screen.getByLabelText(image1InputLabelText);
+      const image2Input = screen.getByLabelText(image2InputLabelText);
+      const image3Input = screen.getByLabelText(image3InputLabelText);
+      const image4Input = screen.getByLabelText(image4InputLabelText);
+      const image5Input = screen.getByLabelText(image5InputLabelText);
 
-  //     await userEvent.selectOptions(typeInput, typeText);
-  //     await userEvent.type(addressInput, addressText);
-  //     await userEvent.type(cityInput, cityText);
-  //     await userEvent.type(priceInput, priceNumber.toString());
-  //     await userEvent.type(roomsInput, roomsNumber.toString());
-  //     await userEvent.type(metersInput, metersNumber.toString());
-  //     await userEvent.type(yearInput, yearNumber.toString());
-  //     await userEvent.type(bathroomsInput, bathroomNumber.toString());
-  //     await userEvent.type(consumptionInput, consumptionNumber.toString());
-  //     await userEvent.type(emissionsInput, emissionsNumber.toString());
-  //     await userEvent.selectOptions(airconInput, airconText);
-  //     await userEvent.selectOptions(parkingInput, parkingText);
-  //     await userEvent.selectOptions(elevatorInput, elevatorText);
-  //     await userEvent.type(descriptionInput, descriptionText);
-  //     await userEvent.type(image1Input, image1Url);
-  //     await userEvent.type(image2Input, image2Url);
-  //     await userEvent.type(image3Input, image3Url);
-  //     await userEvent.type(image4Input, image4Url);
-  //     await userEvent.type(image5Input, image5Url);
+      await userEvent.selectOptions(typeInput, typeText);
+      await userEvent.type(addressInput, addressText);
+      await userEvent.type(cityInput, cityText);
+      await userEvent.type(priceInput, priceNumber.toString());
+      await userEvent.type(roomsInput, roomsNumber.toString());
+      await userEvent.type(metersInput, metersNumber.toString());
+      await userEvent.type(yearInput, yearNumber.toString());
+      await userEvent.type(bathroomsInput, bathroomNumber.toString());
+      await userEvent.type(consumptionInput, consumptionNumber.toString());
+      await userEvent.type(emissionsInput, emissionsNumber.toString());
+      await userEvent.selectOptions(airconInput, airconText);
+      await userEvent.selectOptions(parkingInput, parkingText);
+      await userEvent.selectOptions(elevatorInput, elevatorText);
+      await userEvent.type(descriptionInput, descriptionText);
+      await userEvent.type(image1Input, image1Url);
+      await userEvent.type(image2Input, image2Url);
+      await userEvent.type(image3Input, image3Url);
+      await userEvent.type(image4Input, image4Url);
+      await userEvent.type(image5Input, image5Url);
 
-  //     const button = screen.getByRole("button", { name: buttonText });
-  //     await userEvent.click(button);
+      const button = await screen.findByRole("button", { name: buttonText });
 
-  //     expect(onSubmitProperty).toHaveBeenCalled();
-  //   });
-  // });
+      expect(button).toBeEnabled();
+    });
+  });
+  describe("When inputs are filled and the user submits the form", () => {
+    test("Then the action on submit function should be called", async () => {
+      const buttonText = "Add";
+
+      render(<NewPropertyForm onSubmitProperty={onSubmitProperty} />);
+
+      const typeInput = screen.getByLabelText(typeInputLabelText);
+      const addressInput = screen.getByLabelText(addressInputLabelText);
+      const cityInput = screen.getByLabelText(cityInputLabelText);
+      const priceInput = screen.getByLabelText(priceInputLabelText);
+      const roomsInput = screen.getByLabelText(roomsInputLabelText);
+      const metersInput = screen.getByLabelText(metersInputLabelText);
+      const yearInput = screen.getByLabelText(yearInputLabelText);
+      const bathroomsInput = screen.getByLabelText(bathroomsInputLabelText);
+      const airconInput = screen.getByLabelText(airconInputLabelText);
+      const consumptionInput = screen.getByLabelText(consumptionInputLabelText);
+      const elevatorInput = screen.getByLabelText(elevatorInputLabelText);
+      const parkingInput = screen.getByLabelText(parkingInputLabelText);
+      const emissionsInput = screen.getByLabelText(emissionsInputLabelText);
+      const descriptionInput = screen.getByLabelText(descriptionInputLabelText);
+      const image1Input = screen.getByLabelText(image1InputLabelText);
+      const image2Input = screen.getByLabelText(image2InputLabelText);
+      const image3Input = screen.getByLabelText(image3InputLabelText);
+      const image4Input = screen.getByLabelText(image4InputLabelText);
+      const image5Input = screen.getByLabelText(image5InputLabelText);
+
+      await userEvent.selectOptions(typeInput, typeText);
+      await userEvent.type(addressInput, addressText);
+      await userEvent.type(cityInput, cityText);
+      await userEvent.type(priceInput, priceNumber.toString());
+      await userEvent.type(roomsInput, roomsNumber.toString());
+      await userEvent.type(metersInput, metersNumber.toString());
+      await userEvent.type(yearInput, yearNumber.toString());
+      await userEvent.type(bathroomsInput, bathroomNumber.toString());
+      await userEvent.type(consumptionInput, consumptionNumber.toString());
+      await userEvent.type(emissionsInput, emissionsNumber.toString());
+      await userEvent.selectOptions(airconInput, airconText);
+      await userEvent.selectOptions(parkingInput, parkingText);
+      await userEvent.selectOptions(elevatorInput, elevatorText);
+      await userEvent.type(descriptionInput, descriptionText);
+      await userEvent.type(image1Input, image1Url);
+      await userEvent.type(image2Input, image2Url);
+      await userEvent.type(image3Input, image3Url);
+      await userEvent.type(image4Input, image4Url);
+      await userEvent.type(image5Input, image5Url);
+
+      const button = screen.getByRole("button", { name: buttonText });
+      await userEvent.click(button);
+
+      expect(onSubmitProperty).toHaveBeenCalled();
+    });
+  });
 });

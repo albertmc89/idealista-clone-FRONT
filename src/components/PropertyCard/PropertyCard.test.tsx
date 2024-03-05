@@ -48,10 +48,10 @@ describe("Given a PropertyCard component", () => {
     expect(heading).toBeInTheDocument();
   });
 
-  test("Then it should show a text with 'sin ascensor' inside if the properties state is false", () => {
+  test("Then it should show a text with 'No lift' inside if the properties state is false", () => {
     const mockPropertyFalseElevator = { ...propertiesMock[0], elevator: "No" };
 
-    const headingText = "sin ascensor";
+    const headingText = "No lift";
 
     render(
       <BrowserRouter>
@@ -66,9 +66,9 @@ describe("Given a PropertyCard component", () => {
     expect(heading).toBeInTheDocument();
   });
 
-  test("Then it should show a text with 'sin ascensor' inside if the properties state is true", () => {
+  test("Then it should show a text with 'Lift' inside if the properties state is true", () => {
     const mockPropertyTrueElevator = { ...propertiesMock[0], elevator: "Yes" };
-    const headingText = "con ascensor";
+    const headingText = "Lift";
 
     render(
       <BrowserRouter>
@@ -81,5 +81,21 @@ describe("Given a PropertyCard component", () => {
     const heading = screen.getByText(headingText);
 
     expect(heading).toBeInTheDocument();
+  });
+
+  test("It should show a button with the text 'not-rented' inside", () => {
+    const buttonText = "not rented";
+
+    render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <PropertyCard property={propertiesMock[0]} />
+        </Provider>
+      </BrowserRouter>,
+    );
+
+    const button = screen.getByRole("button", { name: buttonText });
+
+    expect(button).toBeInTheDocument();
   });
 });
