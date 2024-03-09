@@ -166,6 +166,13 @@ const PropertyDetailPage = (): React.ReactElement => {
           </ul>
         </article>
         <div className="property__yield">
+          <div className="button-container__card">
+            <span
+              className={selectedProperty?.isRented ? "rented" : "not-rented"}
+            >
+              {selectedProperty?.isRented ? "rented" : "not rented"}
+            </span>
+          </div>
           <span>Yield</span>
           <span>{result}%</span>
         </div>

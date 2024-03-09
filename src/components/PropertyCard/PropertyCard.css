@@ -4,9 +4,10 @@
   flex-direction: column;
   color: white;
   width: 280px;
-  height: 420px;
+  height: 430px;
   overflow: hidden;
   border-radius: 8px;
+  position: relative;
 }
 
 .property__picture {
@@ -26,7 +27,7 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 10px;
 }
 
 .property__data-container {
@@ -49,7 +50,8 @@
 .property__data-list {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: start;
+  gap: 20px;
   font-size: 0.85rem;
 }
 
@@ -57,6 +59,11 @@
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.property__data-detail {
+  font-size: 0.8rem;
+  max-width: 82px;
 }
 
 .property__data-description {
@@ -71,10 +78,6 @@
   overflow: hidden;
 }
 
-.link--solid {
-  padding: 7px;
-}
-
 .link--solid:hover {
   color: rgb(21, 203, 235);
 }
@@ -83,24 +86,31 @@
 .property__button {
   background-color: transparent;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   gap: 15px;
 }
 
-.button-container__card {
-  position: absolute;
-  padding: 10px;
+.rented {
+  border-radius: 7px;
+  background: var(--white);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 5px;
+  font-weight: 700;
+  color: rgb(14, 129, 16);
+  border: 2px solid var(--primaryColor);
 }
 
-.rented {
-  border-radius: 10px;
+.not-rented {
+  border-radius: 7px;
   background: var(--white);
   text-transform: uppercase;
   font-size: 0.8rem;
   padding: 5px;
   font-weight: 700;
   color: rgb(177, 16, 16);
+  border: 2px solid var(--primaryColor);
 }
 
 @media (min-width: 765px) {
@@ -124,6 +134,13 @@
     padding: 20px;
   }
 
+  .property__data-list {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    font-size: 0.85rem;
+  }
+
   .property__data-description {
     font-size: 0.7rem;
     max-height: 65px;
@@ -140,5 +157,13 @@
 
   .link--solid {
     font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .property__data-list {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
   }
 }

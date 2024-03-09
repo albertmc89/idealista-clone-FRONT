@@ -66,7 +66,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           name="type"
           id="type"
           onChange={changeNewProperty}
-          required
         >
           <option value="">-- Select --</option>
           <option value="House">House</option>
@@ -89,7 +88,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           value={formatedPrice}
           className="form__input"
           onChange={changeNewProperty}
-          required
         />
       </div>
       <div className="form-control">
@@ -102,7 +100,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           value={newProperty.address}
           className="form__input"
           onChange={changeNewProperty}
-          required
         />
       </div>
       <div className="form-control">
@@ -115,7 +112,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           value={newProperty.city}
           className="form__input"
           onChange={changeNewProperty}
-          required
         />
       </div>
       <div className="form-control">
@@ -130,7 +126,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           value={newProperty.meters === 0 ? "" : newProperty.meters}
           className="form__input"
           onChange={changeNewProperty}
-          required
         />
       </div>
       <div className="form-control">
@@ -145,7 +140,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           value={newProperty.rooms === 0 ? "" : newProperty.rooms}
           className="form__input"
           onChange={changeNewProperty}
-          required
         />
       </div>
       <div className="form-control">
@@ -159,7 +153,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           value={newProperty.bathrooms === 0 ? "" : newProperty.bathrooms}
           className="form__input"
           onChange={changeNewProperty}
-          required
         />
       </div>
       <div className="form-control">
@@ -171,7 +164,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           name="level"
           id="level"
           onChange={changeNewProperty}
-          required
         >
           <option value="">-- Select --</option>
           <option value="First">First</option>
@@ -200,7 +192,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           name="elevator"
           id="elevator"
           onChange={changeNewProperty}
-          required
         >
           <option value="">-- Select --</option>
           <option value="Yes">Yes</option>
@@ -219,7 +210,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           value={newProperty.year === 0 ? "" : newProperty.year}
           className="form__input"
           onChange={changeNewProperty}
-          required
         />
       </div>
       <div className="form-control">
@@ -231,7 +221,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           name="heating"
           id="heating"
           onChange={changeNewProperty}
-          required
         >
           <option value="">-- Select --</option>
           <option value="Yes">Yes</option>
@@ -250,7 +239,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           value={newProperty.consumption === 0 ? "" : newProperty.consumption}
           className="form__input"
           onChange={changeNewProperty}
-          required
         />
       </div>
       <div className="form-control">
@@ -265,7 +253,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           value={newProperty.emissions === 0 ? "" : newProperty.emissions}
           className="form__input"
           onChange={changeNewProperty}
-          required
         />
       </div>
       <div className="form-control">
@@ -277,7 +264,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           name="aircon"
           id="aircon"
           onChange={changeNewProperty}
-          required
         >
           <option value="">-- Select --</option>
           <option value="Yes">Yes</option>
@@ -293,7 +279,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           name="parking"
           id="parking"
           onChange={changeNewProperty}
-          required
         >
           <option value="">-- Select --</option>
           <option value="Yes">Yes</option>
@@ -309,7 +294,6 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           value={newProperty.description}
           className="form__input"
           onChange={changeNewProperty}
-          required
         />
       </div>
       <div className="form-control">

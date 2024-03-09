@@ -14,14 +14,37 @@ describe("Given a properties slice", () => {
 
       const toggleIsRentedAction = togglePropertyActionCreator({
         ...propertiesMock[0],
-        isRented: true,
+        isRented: false,
       });
       const newPropertiesState = propertiesReducer(
         currentPropertiesState,
         toggleIsRentedAction,
       );
 
-      expect(newPropertiesState.properties[0]).toHaveProperty("isRented", true);
+      expect(newPropertiesState.properties[0]).toHaveProperty(
+        "isRented",
+        false,
+      );
+    });
+  });
+
+  describe("When it receives a modifyDestination action with 'Lake Louise' and a current state with no destinations", () => {
+    test("Then it should return a new state with no destinations", () => {
+      const currentPropertiesState: PropertyState = {
+        properties: [],
+      };
+
+      const toggleIsRentedAction = togglePropertyActionCreator({
+        ...propertiesMock[0],
+        isRented: false,
+      });
+
+      const newPropertiesState = propertiesReducer(
+        currentPropertiesState,
+        toggleIsRentedAction,
+      );
+
+      expect(newPropertiesState.properties).toHaveLength(0);
     });
   });
 });

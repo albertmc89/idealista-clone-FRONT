@@ -58,4 +58,35 @@ describe("Given a PropertiesListPage", () => {
       expect(heading).not.toBeInTheDocument();
     });
   });
+
+  // describe("When the user clicks on button with text 'Rented'", () => {
+  //   test("Then it should toggle to 'not-rented'", async () => {
+  //     const buttonText = "not rented";
+  //     const toggledButtonText = "rented";
+
+  //     const store = setupStore({
+  //       propertiesState: { properties: propertiesMock },
+  //     });
+
+  //     render(
+  //       <BrowserRouter>
+  //         <Provider store={store}>
+  //           <PropertiesListPage />
+  //         </Provider>
+  //       </BrowserRouter>,
+  //     );
+
+  //     const buttonToToggle = await screen.findByRole("button", {
+  //       name: buttonText,
+  //     });
+
+  //     await userEvent.click(buttonToToggle);
+
+  //     const buttonToggled = await screen.findByRole("button", {
+  //       name: toggledButtonText,
+  //     });
+
+  //     expect(buttonToggled).toBeInTheDocument();
+  //   });
+  // });
 });

@@ -10,6 +10,10 @@ import "./PropertyCard.css";
 import paths from "../../paths/paths";
 
 import Button from "../Button/Button";
+import {
+  startLoadingActionCreator,
+  stopLoadingActionCreator,
+} from "../../store/ui/uiSlice";
 
 interface PropertyCardProps {
   property: Partial<Property>;
@@ -39,8 +43,10 @@ const PropertyCard = ({
   };
 
   const toggleProperty = async () => {
+    dispatch(startLoadingActionCreator());
     const toggledProperty = await modifyPropertyApi(id!, isRented!);
 
+    dispatch(stopLoadingActionCreator());
     dispatch(togglePropertyActionCreator(toggledProperty));
   };
 
@@ -49,13 +55,6 @@ const PropertyCard = ({
   return (
     <article className="property">
       <div className="property__container">
-        <div className="button-container__card">
-          <Button
-            className={isRented ? "rented" : "not rented"}
-            text={isRented ? "rented" : "not rented"}
-            actionOnClick={toggleProperty}
-          />
-        </div>
         <img
           className="property__picture"
           src={image1}
@@ -79,12 +78,12 @@ const PropertyCard = ({
               {meters}
               <span className="property__data-label">m2</span>
             </li>
-            <li className="property__data-detail">{level}</li>
+            <li className="property__data-detail">{level} level</li>
             <li className="property__data">
               {elevator === "Yes" ? (
-                <span className="property__data-label">con ascensor</span>
+                <span className="property__data-detail">Lift</span>
               ) : (
-                <span className="property__data-label">sin ascensor</span>
+                <span className="property__data-detail">No lift</span>
               )}
             </li>
           </ul>
@@ -101,8 +100,16 @@ const PropertyCard = ({
               src="/img/DeleteForever.svg"
               aria-label="delete logo vector"
               className="delete-logo"
+              alt="delete icon"
             />
           </button>
+          <div className="button-container__card">
+            <Button
+              className={isRented ? "rented" : "not-rented"}
+              text={isRented ? "rented" : "not rented"}
+              actionOnClick={toggleProperty}
+            />
+          </div>
         </div>
       </div>
     </article>
