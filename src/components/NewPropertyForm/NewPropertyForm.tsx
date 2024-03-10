@@ -77,6 +77,15 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           <option value="Building">Building</option>
         </select>
       </div>
+      <div className="form-picture">
+        <img
+          className="picture"
+          src="img/plano.webp"
+          alt="plano"
+          width="220"
+          height="160"
+        />
+      </div>
       <div className="form-control">
         <label htmlFor="price" className="form__label">
           Price:

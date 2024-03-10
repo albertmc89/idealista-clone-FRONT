@@ -14,6 +14,7 @@ import { Suspense } from "react";
 import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import NewPropertyPage from "../../pages/NewPropertyPage/NewPropertyPage";
 import PropertyDetailPage from "../../pages/PropertyDeatilPage/PropertyDetailPage";
+import Footer from "../Footer/Footer";
 
 const App = (): React.ReactElement => {
   const [user] = useAuthState(auth);
@@ -61,6 +62,7 @@ const App = (): React.ReactElement => {
         </Routes>
         <ToastContainer />
       </main>
+      <Footer />
     </>
   );
 };
