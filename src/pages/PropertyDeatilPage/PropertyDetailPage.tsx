@@ -20,8 +20,10 @@ const PropertyDetailPage = (): React.ReactElement => {
   const formatedPrice = selectedProperty
     ? selectedProperty.price.toLocaleString()
     : "";
+
+  const rent = selectedProperty ? selectedProperty.rent : 0;
   const price = selectedProperty ? selectedProperty.price : 0;
-  const result = ((Math.round(650 * 12) / price) * 100).toFixed(2);
+  const result = ((Math.round(rent * 12) / price) * 100).toFixed(2);
 
   const { id } = useParams();
 
@@ -174,7 +176,11 @@ const PropertyDetailPage = (): React.ReactElement => {
             </span>
           </div>
           <span>Yield</span>
-          <span>{result}%</span>
+          {selectedProperty?.isRented === true ? (
+            <span className="property__data-label">{result}%</span>
+          ) : (
+            <span className="property__data-label">Not rented</span>
+          )}
         </div>
       </div>
     </div>

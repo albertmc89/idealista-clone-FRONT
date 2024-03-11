@@ -17,6 +17,7 @@ export interface ApiProperty {
   level: string;
   description: string;
   isRented: boolean;
+  rent: number;
   image1: string;
   image2?: string;
   image3?: string;
