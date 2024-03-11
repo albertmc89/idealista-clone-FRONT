@@ -31,6 +31,7 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
       image3: "",
       image4: "",
       image5: "",
+      rent: 0,
     },
   );
 
@@ -39,10 +40,18 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >,
   ) => {
-    setNewProperty({
-      ...newProperty,
-      [event.target.id]: event.target.value,
-    });
+    const { id, value } = event.target;
+    if (id === "isrented") {
+      setNewProperty({
+        ...newProperty,
+        isRented: value === "Yes",
+      });
+    } else {
+      setNewProperty({
+        ...newProperty,
+        [event.target.id]: event.target.value,
+      });
+    }
   };
 
   const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -53,6 +62,9 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
 
   const formatedPrice = newProperty.price
     ? newProperty.price.toLocaleString()
+    : "";
+  const formatedRent = newProperty.rent
+    ? newProperty.rent.toLocaleString()
     : "";
 
   return (
@@ -95,6 +107,35 @@ const NewPropertyForm = ({ onSubmitProperty }: NewFormProps) => {
           id="price"
           min="1"
           value={formatedPrice}
+          className="form__input"
+          onChange={changeNewProperty}
+        />
+      </div>
+      <div className="form-control">
+        <label htmlFor="isrented" className="form__label">
+          Is rented?:
+        </label>
+        <select
+          className="form-select"
+          name="isrented"
+          id="isrented"
+          onChange={changeNewProperty}
+        >
+          <option value="">-- Select --</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div className="form-control">
+        <label htmlFor="rent" className="form__label">
+          Rent:
+        </label>
+        <input
+          type="number"
+          id="rent"
+          min="0"
+          max="100000"
+          value={formatedRent}
           className="form__input"
           onChange={changeNewProperty}
         />

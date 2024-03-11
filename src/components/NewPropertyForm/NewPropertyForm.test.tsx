@@ -11,6 +11,7 @@ describe("Given a NewPropertyForm component", () => {
   const addressInputLabelText = "Address:";
   const cityInputLabelText = "City:";
   const priceInputLabelText = "Price:";
+  const rentInputLabelText = "Rent:";
   const roomsInputLabelText = "Rooms:";
   const metersInputLabelText = "Meters (m2):";
   const yearInputLabelText = "Year:";
@@ -31,6 +32,7 @@ describe("Given a NewPropertyForm component", () => {
   const addressText = "sda";
   const cityText = "asd";
   const priceNumber = 23;
+  const rentNumber = 0;
   const roomsNumber = 3;
   const metersNumber = 66;
   const yearNumber = 1997;
@@ -60,6 +62,7 @@ describe("Given a NewPropertyForm component", () => {
       const addressInput = screen.getByLabelText(addressInputLabelText);
       const cityInput = screen.getByLabelText(cityInputLabelText);
       const priceInput = screen.getByLabelText(priceInputLabelText);
+      const rentInput = screen.getByLabelText(rentInputLabelText);
       const roomsInput = screen.getByLabelText(roomsInputLabelText);
       const metersInput = screen.getByLabelText(metersInputLabelText);
       const yearInput = screen.getByLabelText(yearInputLabelText);
@@ -80,6 +83,7 @@ describe("Given a NewPropertyForm component", () => {
       expect(addressInput).toBeInTheDocument();
       expect(cityInput).toBeInTheDocument();
       expect(priceInput).toBeInTheDocument();
+      expect(rentInput).toBeInTheDocument();
       expect(roomsInput).toBeInTheDocument();
       expect(metersInput).toBeInTheDocument();
       expect(yearInput).toBeInTheDocument();
@@ -109,6 +113,7 @@ describe("Given a NewPropertyForm component", () => {
       const addressInput = screen.getByLabelText(addressInputLabelText);
       const cityInput = screen.getByLabelText(cityInputLabelText);
       const priceInput = screen.getByLabelText(priceInputLabelText);
+      const rentInput = screen.getByLabelText(rentInputLabelText);
       const roomsInput = screen.getByLabelText(roomsInputLabelText);
       const metersInput = screen.getByLabelText(metersInputLabelText);
       const yearInput = screen.getByLabelText(yearInputLabelText);
@@ -129,6 +134,7 @@ describe("Given a NewPropertyForm component", () => {
       await userEvent.type(addressInput, addressText);
       await userEvent.type(cityInput, cityText);
       await userEvent.type(priceInput, priceNumber.toString());
+      await userEvent.type(rentInput, rentNumber.toString());
       await userEvent.type(roomsInput, roomsNumber.toString());
       await userEvent.type(metersInput, metersNumber.toString());
       await userEvent.type(yearInput, yearNumber.toString());
@@ -149,6 +155,7 @@ describe("Given a NewPropertyForm component", () => {
       expect(addressInput).toHaveValue(addressText);
       expect(cityInput).toHaveValue(cityText);
       expect(priceInput).toHaveValue(priceNumber);
+      expect(rentInput).toHaveValue(rentNumber);
       expect(roomsInput).toHaveValue(roomsNumber);
       expect(metersInput).toHaveValue(metersNumber);
       expect(yearInput).toHaveValue(yearNumber);
@@ -181,6 +188,7 @@ describe("Given a NewPropertyForm component", () => {
       const addressInput = screen.getByLabelText(addressInputLabelText);
       const cityInput = screen.getByLabelText(cityInputLabelText);
       const priceInput = screen.getByLabelText(priceInputLabelText);
+      const rentInput = screen.getByLabelText(rentInputLabelText);
       const roomsInput = screen.getByLabelText(roomsInputLabelText);
       const metersInput = screen.getByLabelText(metersInputLabelText);
       const yearInput = screen.getByLabelText(yearInputLabelText);
@@ -201,6 +209,7 @@ describe("Given a NewPropertyForm component", () => {
       await userEvent.type(addressInput, addressText);
       await userEvent.type(cityInput, cityText);
       await userEvent.type(priceInput, priceNumber.toString());
+      await userEvent.type(rentInput, rentNumber.toString());
       await userEvent.type(roomsInput, roomsNumber.toString());
       await userEvent.type(metersInput, metersNumber.toString());
       await userEvent.type(yearInput, yearNumber.toString());
@@ -232,6 +241,7 @@ describe("Given a NewPropertyForm component", () => {
       const addressInput = screen.getByLabelText(addressInputLabelText);
       const cityInput = screen.getByLabelText(cityInputLabelText);
       const priceInput = screen.getByLabelText(priceInputLabelText);
+      const rentInput = screen.getByLabelText(rentInputLabelText);
       const roomsInput = screen.getByLabelText(roomsInputLabelText);
       const metersInput = screen.getByLabelText(metersInputLabelText);
       const yearInput = screen.getByLabelText(yearInputLabelText);
@@ -252,6 +262,7 @@ describe("Given a NewPropertyForm component", () => {
       await userEvent.type(addressInput, addressText);
       await userEvent.type(cityInput, cityText);
       await userEvent.type(priceInput, priceNumber.toString());
+      await userEvent.type(rentInput, rentNumber.toString());
       await userEvent.type(roomsInput, roomsNumber.toString());
       await userEvent.type(metersInput, metersNumber.toString());
       await userEvent.type(yearInput, yearNumber.toString());
